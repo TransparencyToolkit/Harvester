@@ -1,0 +1,26 @@
+class LinkedinProfile
+  include Neo4j::ActiveNode
+  property :profile_url
+  property :full_name
+  property :first_name
+  property :last_name
+  property :skills
+  property :full_location
+  property :location
+  property :area
+  property :industry
+  property :summary
+  property :current_title
+  property :interests
+  property :number_of_connections
+  property :picture
+  property :pic_path
+  property :full_html
+  property :title
+  property :company
+  property :description
+  property :start_date
+  property :end_date
+  property :work_location
+  property :current
+end

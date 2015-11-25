@@ -1,0 +1,10 @@
+<%= form_for(@dataset) do |f| %>
+  <% @input.each do |field| %>
+    <%= f.label field[0].to_sym %><br />
+    <%= f.text_field field[0].to_sym %>
+  <% end %>
+  <% f.hidden_field :source, value: params[:source] %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_tag('/datasets/new', method: 'get') do %>
+<%= select_tag :source, options_for_select(@crawler_names) %>
+<%= submit_tag("Choose Datasource") %>
+<% end %>
+

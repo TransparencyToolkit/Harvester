@@ -20,3 +20,47 @@
 10:37:37.659 [main] INFO  org.eclipse.jetty.server.Server - Started @14153ms
 2015-11-25 15:37:37.660+0000 INFO  [API] Server started on: http://localhost:7474/
 2015-11-25 15:37:37.660+0000 INFO  [API] Remote interface ready and available at [http://localhost:7474/]
+2015-11-29 21:12:52.491+0000 INFO  [API] Setting startup timeout to: 120000ms based on 120000
+Detected incorrectly shut down database, performing recovery..
+2015-11-29 21:13:00.237+0000 INFO  [API] Successfully started database
+2015-11-29 21:13:00.575+0000 INFO  [API] Starting HTTP on port :7474 with 2 threads available
+2015-11-29 21:13:01.178+0000 INFO  [API] Enabling HTTPS on port :7473
+16:13:02.049 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @14948ms
+2015-11-29 21:13:02.218+0000 INFO  [API] Mounting static content at [/webadmin] from [webadmin-html]
+2015-11-29 21:13:02.346+0000 INFO  [API] Mounting static content at [/browser] from [browser]
+16:13:02.353 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.4.v20141103
+16:13:02.396 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@1ea01d3{/,null,AVAILABLE}
+16:13:02.621 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /webadmin, did not find org.apache.jasper.servlet.JspServlet
+16:13:02.654 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@141bfb6{/webadmin,jar:file:/home/shidash/Code/DocumentLoader/db/neo4j/development/system/lib/neo4j-server-2.2.7-static-web.jar!/webadmin-html,AVAILABLE}
+16:13:04.010 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1b33d91{/db/manage,null,AVAILABLE}
+16:13:04.698 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@b0ed97{/db/data,null,AVAILABLE}
+16:13:04.733 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.apache.jasper.servlet.JspServlet
+16:13:04.736 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@d06d4d{/browser,jar:file:/home/shidash/Code/DocumentLoader/db/neo4j/development/system/lib/neo4j-browser-2.2.7.jar!/browser,AVAILABLE}
+16:13:05.016 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@cd51da{/,null,AVAILABLE}
+16:13:05.162 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@1f472c5{HTTP/1.1}{localhost:7474}
+16:13:05.527 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@14f6027{SSL-HTTP/1.1}{localhost:7473}
+16:13:05.527 [main] INFO  org.eclipse.jetty.server.Server - Started @18464ms
+2015-11-29 21:13:05.527+0000 INFO  [API] Server started on: http://localhost:7474/
+2015-11-29 21:13:05.528+0000 INFO  [API] Remote interface ready and available at [http://localhost:7474/]
+2015-11-30 16:11:46.824+0000 INFO  [API] Setting startup timeout to: 120000ms based on 120000
+Detected incorrectly shut down database, performing recovery..
+2015-11-30 16:11:55.282+0000 INFO  [API] Successfully started database
+2015-11-30 16:11:55.816+0000 INFO  [API] Starting HTTP on port :7474 with 2 threads available
+2015-11-30 16:11:57.057+0000 INFO  [API] Enabling HTTPS on port :7473
+11:11:58.263 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @17548ms
+2015-11-30 16:11:58.448+0000 INFO  [API] Mounting static content at [/webadmin] from [webadmin-html]
+2015-11-30 16:11:58.545+0000 INFO  [API] Mounting static content at [/browser] from [browser]
+11:11:58.552 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.4.v20141103
+11:11:58.631 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@875491{/,null,AVAILABLE}
+11:11:58.938 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /webadmin, did not find org.apache.jasper.servlet.JspServlet
+11:11:58.985 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@79ad70{/webadmin,jar:file:/home/shidash/Code/DocumentLoader/db/neo4j/development/system/lib/neo4j-server-2.2.7-static-web.jar!/webadmin-html,AVAILABLE}
+11:12:00.435 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@178e6b3{/db/manage,null,AVAILABLE}
+11:12:01.331 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3fc0c0{/db/data,null,AVAILABLE}
+11:12:01.435 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.apache.jasper.servlet.JspServlet
+11:12:01.438 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@17a411c{/browser,jar:file:/home/shidash/Code/DocumentLoader/db/neo4j/development/system/lib/neo4j-browser-2.2.7.jar!/browser,AVAILABLE}
+11:12:01.835 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@166bf24{/,null,AVAILABLE}
+11:12:01.942 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@1bb676{HTTP/1.1}{localhost:7474}
+11:12:02.268 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@11fa8c{SSL-HTTP/1.1}{localhost:7473}
+11:12:02.268 [main] INFO  org.eclipse.jetty.server.Server - Started @21568ms
+2015-11-30 16:12:02.269+0000 INFO  [API] Server started on: http://localhost:7474/
+2015-11-30 16:12:02.269+0000 INFO  [API] Remote interface ready and available at [http://localhost:7474/]

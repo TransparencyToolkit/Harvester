@@ -1,5 +1,6 @@
 class LinkedinProfile
   include Neo4j::ActiveNode
+  has_one :out, :dataset, type: :dataset
   property :profile_url
   property :full_name
   property :first_name
@@ -23,4 +24,5 @@ class LinkedinProfile
   property :end_date
   property :work_location
   property :current
+  property :timestamp
 end

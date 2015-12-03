@@ -44,7 +44,7 @@ class DatasetsController < ApplicationController
   end
 
   def save_data_files(params, print_data)
-    dataset_name = params["dataset"]["search_query"]
+    dataset_name = params["dataset"]["name"]
     dirname = ENV['HOME']+"/Data/KG/"
     filename = dirname+dataset_name.gsub(" ", "_").gsub("/", "-")+".json"
     File.write(filename, print_data)
@@ -54,8 +54,13 @@ class DatasetsController < ApplicationController
   # Save all data
   def save_data(results, dataset, params)
     results.each do |dataitem|
-      item = LinkedinProfile.create(dataitem)
-      dataset.linkedin_profiles << item
+      # Create item for appropriate model
+      classname = get_item_classname(params["source"])
+      item_values = gen_params_hash(dataitem)
+      item = eval "ClassGen::#{classname}.create(#{item_values})"
+      
+      # Add association with dataset
+      dataset.dataitems << item
       item.dataset = dataset
     end
 
@@ -63,21 +68,43 @@ class DatasetsController < ApplicationController
     save_data_files(params, print_data)
   end
 
+  # Generate parameters hash
+  def gen_params_hash(dataitem)
+    item_hash = Hash.new
+    output_fields = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)["output_fields"]
+    output_fields.each do |field|
+      item_hash[field] = dataitem[field]
+    end
+
+    return item_hash
+  end
+
+  # Get classname of form SourcenameItem
+  def get_item_classname(source)
+    name = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)["name"]
+    gen_class_name(name)
+  end
+
   def gen_print_data(dataset)
-    result_data = dataset.linkedin_profiles.inject([]) do |all_items, item|
-      all_items.push(item.as_json["linkedin_profile"])
+    result_data = dataset.dataitems.inject([]) do |all_items, item|
+      all_items.push(item.as_json.first[1])
     end
     print_data = JSON.pretty_generate(result_data)
   end
-  
+
+  # Generate URL with params and crawler info
   def gen_query_url(params)
+    @input_params = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)["input_params"]
+    
+    # Gen url base
     url = "http://0.0.0.0:9506/crawlers?"
-    url += "crawler=LinkedinCrawl"
+    url += "crawler="+params[:source]
     
     # Add all params for dataset
-    params["dataset"].each do |param|
-      url += "&"+param[0]+"="+Base64.encode64(param[1]).strip
+    @input_params.each do |param, type|
+      url += "&"+param+"="+Base64.encode64(params[param]).strip
     end
+    
     return url
   end
   

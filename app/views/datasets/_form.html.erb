@@ -1,9 +1,13 @@
 <%= form_for(@dataset) do |f| %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br /><br /><br />
+  
   <% @input.each do |field| %>
-    <%= f.label field[0].to_sym %><br />
-    <%= f.text_field field[0].to_sym %>
+    <%= label_tag field[0].to_sym %><br />
+    <%= text_field_tag field[0].to_sym %><br /><br />
   <% end %>
-  <% f.hidden_field :source, value: params[:source] %>
+  
+  <%= hidden_field_tag 'source', params[:source] %>
   <div class="actions">
     <%= f.submit %>
   </div>

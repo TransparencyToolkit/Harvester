@@ -1,10 +1,9 @@
 <%= form_for(@dataset) do |f| %>
   <%= f.label :name %><br />
   <%= f.text_field :name %><br /><br /><br />
-  
-  <% @input.each do |field| %>
-    <%= label_tag field[0].to_sym %><br />
-    <%= text_field_tag field[0].to_sym %><br /><br />
+
+  <% 2.times do |count| %>
+    <%= render 'query_fields', count: count %>
   <% end %>
   
   <%= hidden_field_tag 'source', params[:source] %>

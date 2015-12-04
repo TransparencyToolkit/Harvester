@@ -64,6 +64,8 @@ GEM
     faraday_middleware-multi_json (0.0.6)
       faraday_middleware
       multi_json
+    fileutils (0.7)
+      rmagick (>= 2.13.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     httparty (0.13.7)
@@ -152,6 +154,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    rmagick (2.15.4)
     rubyzip (1.1.7)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -194,6 +197,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   curb
+  fileutils
   jbuilder (~> 2.0)
   jquery-rails
   neo4j (~> 5.2.7)

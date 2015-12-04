@@ -2187,3 +2187,331 @@ Storage files: (filename : modification date - size)
 2015-12-03 16:45:26.845+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
 2015-12-03 16:45:26.847+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634903638(uuid) [provider: {key=lucene, version=1.0}]]
 2015-12-03 16:45:26.852+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:03.355+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:93869610(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:03.371+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:03.373+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:93869610(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:03.377+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:03.462+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:93510600(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:03.475+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:03.478+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:93510600(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:03.482+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:05.797+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:93248400(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:05.811+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:05.813+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:93248400(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:05.819+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:05.891+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:92885030(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:05.908+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:05.910+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:92885030(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:05.914+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:10.771+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629833808(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:10.786+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:10.787+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629833808(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:10.792+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:10.844+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-631642368(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:10.857+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:10.859+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-631642368(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:10.864+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:34.746+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636111138(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:34.762+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:34.764+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636111138(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:34.768+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:34.820+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636406328(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:34.833+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:00:34.835+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636406328(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:00:34.839+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:04.983+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633848208(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:05.000+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:05.002+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633848208(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:05.009+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:05.079+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-632020118(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:05.094+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:05.096+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-632020118(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:05.102+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:26.065+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634635948(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:26.081+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:26.083+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634635948(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:26.087+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:26.140+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634883018(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:26.154+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:16:26.157+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634883018(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:16:26.162+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:30.371+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634405528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:30.388+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:30.391+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634405528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:30.397+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:30.445+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634689988(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:30.460+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:30.463+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634689988(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:30.467+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:45.244+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-631447538(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:45.259+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:45.261+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-631447538(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:45.265+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:45.322+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629909338(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:45.339+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:18:45.341+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629909338(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:18:45.345+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:38.910+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633323758(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:38.930+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:38.932+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633323758(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:38.938+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:39.021+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633661618(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:39.038+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:39.041+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633661618(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:39.047+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:50.615+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-627673668(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:50.629+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:50.631+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-627673668(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:50.637+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:50.695+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-628373188(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:50.709+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:50.711+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-628373188(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:19:50.715+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:19:54.630+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataset(uuid) with 33 unique values in sample of avg size 33 taken from index containing 33 entries
+2015-12-04 02:23:11.901+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636066788(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:11.916+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:11.918+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636066788(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:11.923+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:11.991+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-635805758(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:12.007+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:12.009+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-635805758(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:12.013+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:33.636+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634859738(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:33.652+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:33.654+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634859738(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:33.659+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:33.708+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633079898(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:33.723+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:23:33.725+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633079898(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:23:33.730+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:03.927+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633025528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:03.949+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:03.954+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633025528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:03.959+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:04.023+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-635681578(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:04.036+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:04.038+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-635681578(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:04.043+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:28.651+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:108032630(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:28.676+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:28.679+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:108032630(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:28.684+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:28.758+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:107721930(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:28.773+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:28.777+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:107721930(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:28.781+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:44.183+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-635151748(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:44.197+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:44.199+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-635151748(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:44.203+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:44.261+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636895548(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:44.276+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:24:44.278+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636895548(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:24:44.283+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:01.442+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637905708(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:01.477+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:01.480+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637905708(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:01.486+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:01.535+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637503678(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:01.550+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:01.552+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637503678(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:01.557+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:09.841+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636099638(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:09.857+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:09.859+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636099638(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:09.864+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:09.918+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637884378(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:09.935+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:09.938+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637884378(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:29:09.943+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:29:14.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataset(uuid) with 36 unique values in sample of avg size 36 taken from index containing 36 entries
+2015-12-04 02:34:14.888+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:105745340(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:34:14.903+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:34:14.904+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:105745340(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:34:14.909+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:34:14.962+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:105374640(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:34:14.976+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:34:14.978+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:105374640(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:34:14.983+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:15.261+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:95073020(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:15.275+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:15.278+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:95073020(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:15.287+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:15.359+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:94766500(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:15.374+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:15.376+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:94766500(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:15.385+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:27.121+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-631653658(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:27.136+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:27.139+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-631653658(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:27.144+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:27.229+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-631316688(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:27.356+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:54:27.363+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-631316688(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:54:27.369+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:40.668+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:72138780(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:40.690+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:40.692+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:72138780(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:40.697+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:40.774+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:91509870(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:40.785+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:40.787+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:91509870(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:40.792+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:56.392+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-632558608(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:56.417+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:56.419+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-632558608(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:56.425+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:56.534+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633608218(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:56.551+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:55:56.553+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633608218(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:55:56.566+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:56:04.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataset(uuid) with 39 unique values in sample of avg size 39 taken from index containing 39 entries
+2015-12-04 02:56:34.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 28 unique values in sample of avg size 28 taken from index containing 28 entries
+2015-12-04 02:57:16.911+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:95702420(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:16.930+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:16.933+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:95702420(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:16.938+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:17.000+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-628111188(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:17.015+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:17.017+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-628111188(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:17.019+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:26.931+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637823608(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:26.947+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:26.949+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637823608(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:26.951+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:27.047+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-638437578(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:27.063+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:57:27.065+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-638437578(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:57:27.067+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:58:04.632+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 36 unique values in sample of avg size 36 taken from index containing 36 entries
+2015-12-04 02:58:51.781+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:94852120(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:58:51.800+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:58:51.807+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:94852120(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:58:51.808+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:58:51.897+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:94481420(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:58:51.913+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:58:51.915+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:94481420(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:58:51.917+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:59:00.394+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629846528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:59:00.410+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:59:00.412+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629846528(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:59:00.414+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:59:00.464+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-631606688(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:59:00.478+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:59:00.480+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-631606688(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 02:59:00.482+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 02:59:34.634+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 44 unique values in sample of avg size 44 taken from index containing 44 entries
+2015-12-04 03:00:34.630+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 47 unique values in sample of avg size 47 taken from index containing 47 entries
+2015-12-04 03:00:36.205+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 MATCH dataset179 WHERE (ID(dataset179) = {ID_dataset179}) MATCH dataset179<-[rel1:`dataset`]-(result_dataitems:`Dataitem`) RETURN result_dataitems
+2015-12-04 03:00:36.207+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset179)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset179))),Parameter(ID_dataset179))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset179)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:00:36.208+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset179)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset179))),Parameter(ID_dataset179))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset179)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:00:36.209+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset179)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset179))),Parameter(ID_dataset179))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset179)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:00:36.209+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset179)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset179))),Parameter(ID_dataset179))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset179)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:00:36.638+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 307ms.
+2015-12-04 03:00:42.878+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634610428(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:00:42.894+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:00:42.897+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634610428(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:00:42.898+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:00:42.960+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-633957548(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:00:42.976+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:00:42.978+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-633957548(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:00:42.979+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:00:45.731+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 2252ms.
+2015-12-04 03:00:45.732+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 52 unique values in sample of avg size 52 taken from index containing 52 entries
+2015-12-04 03:01:08.832+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-630084718(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:08.897+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:08.900+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-630084718(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:08.902+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:08.969+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629340318(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:08.982+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:08.985+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629340318(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:08.987+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:19.042+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-638965098(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:19.056+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:19.060+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-638965098(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:19.062+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:19.127+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-630801818(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:19.142+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:19.144+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-630801818(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:01:19.146+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:01:24.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataset(uuid) with 42 unique values in sample of avg size 42 taken from index containing 42 entries
+2015-12-04 03:01:54.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 60 unique values in sample of avg size 60 taken from index containing 60 entries
+2015-12-04 03:02:52.752+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 MATCH dataset196 WHERE (ID(dataset196) = {ID_dataset196}) MATCH dataset196<-[rel1:`dataset`]-(result_dataitems:`Dataitem`) RETURN result_dataitems
+2015-12-04 03:02:52.754+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset196)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset196))),Parameter(ID_dataset196))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset196)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:02:52.755+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset196)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset196))),Parameter(ID_dataset196))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset196)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:02:52.755+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset196)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset196))),Parameter(ID_dataset196))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset196)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:02:52.756+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset196)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset196))),Parameter(ID_dataset196))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset196)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:02:53.017+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-630304958(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:02:53.034+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:02:53.036+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-630304958(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:02:53.038+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:02:53.112+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-638933378(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:02:53.128+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:02:53.131+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-638933378(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:02:53.133+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:02:54.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 68 unique values in sample of avg size 68 taken from index containing 68 entries
+2015-12-04 03:17:19.105+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636248198(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:19.122+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:19.124+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636248198(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:19.126+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:19.182+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-635161748(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:19.198+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:19.202+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-635161748(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:19.203+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:22.276+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629957988(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:22.289+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:22.293+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629957988(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:22.296+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:22.351+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-630352818(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:22.369+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:22.371+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-630352818(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:22.372+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:30.127+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-629189128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:30.143+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:30.145+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-629189128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:30.146+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:30.201+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637388078(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:30.215+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:17:30.217+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637388078(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:17:30.218+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:18:04.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 76 unique values in sample of avg size 76 taken from index containing 76 entries
+2015-12-04 03:18:33.719+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 MATCH dataset213 WHERE (ID(dataset213) = {ID_dataset213}) MATCH dataset213<-[rel1:`dataset`]-(result_dataitems:`Dataitem`) RETURN result_dataitems
+2015-12-04 03:18:33.721+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset213)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset213))),Parameter(ID_dataset213))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset213)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:18:33.724+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset213)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset213))),Parameter(ID_dataset213))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset213)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:18:33.725+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset213)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset213))),Parameter(ID_dataset213))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset213)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:18:33.725+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(dataset213)),List(),None,true)))),List(),Some(Where(Equals(FunctionInvocation(FunctionName(ID),false,Vector(Identifier(dataset213))),Parameter(ID_dataset213))))), Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(dataset213)),List(),None,true),RelationshipPattern(Some(Identifier(rel1)),false,List(RelTypeName(dataset)),None,None,INCOMING),NodePattern(Some(Identifier(result_dataitems)),List(),None,false))))),List(),Some(Where(HasLabels(Identifier(result_dataitems),List(LabelName(Dataitem)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(result_dataitems),Identifier(result_dataitems)))),None,None,None))))
+2015-12-04 03:18:34.219+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-637473728(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:18:34.240+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:18:34.243+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-637473728(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:18:34.244+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:18:34.311+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-636813068(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:18:34.331+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:18:34.333+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-636813068(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:18:34.335+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:18:34.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 83 unique values in sample of avg size 83 taken from index containing 83 entries
+2015-12-04 03:21:06.142+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-632667128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:06.167+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:06.169+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-632667128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:06.170+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:06.238+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-635092078(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:06.253+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:06.255+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-635092078(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:06.257+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:15.730+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:92039310(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:15.743+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:15.745+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:92039310(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:15.746+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:15.831+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:81346170(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:15.846+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:15.848+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:81346170(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:21:15.849+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:21:54.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 91 unique values in sample of avg size 91 taken from index containing 91 entries
+2015-12-04 03:22:19.667+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-634500868(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:22:19.685+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:22:19.688+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-634500868(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:22:19.690+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:22:19.745+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population started: [:-630982128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:22:19.761+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:22:19.764+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob]: Index population completed. Index is now online: [:-630982128(uuid) [provider: {key=lucene, version=1.0}]]
+2015-12-04 03:22:19.765+0000 INFO  [o.n.k.i.a.KernelSchemaStateStore]: Schema state store has been cleared.
+2015-12-04 03:22:24.631+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :Dataitem(uuid) with 98 unique values in sample of avg size 98 taken from index containing 98 entries

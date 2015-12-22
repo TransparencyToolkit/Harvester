@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DocumentLoader</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Harvester</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/css/screen.css">
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="default gray">
+  <header class="navigation" role="banner">
+    <div class="navigation-wrapper">
+      <a href="javascript:void(0)" class="name">
+        <i class="icon-harvester"></i> Harvester
+      </a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <div class="navigation-tools">
+        <div class="dropdown">
+          <div class="dropdown-container">
+            <p class="dropdown-button">Click to Select</p>
+            <ul class="dropdown-menu dropdown-select">
+              <li><a href="#">Existing Collections</a></li>
+              <li><a href="#">New Collection</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<%= yield %>
+  <%= yield %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>

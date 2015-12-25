@@ -14,7 +14,7 @@ $(document).ready(function() {
   });
 
   // Selectize
-  $('#input-tags2').selectize({
+  $('#new_dataset div.app-sidebars-large input[type=text]').selectize({
     plugins: ['remove_button', 'restore_on_backspace'],
     delimiter: ',',
     persist: false,

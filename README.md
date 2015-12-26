@@ -18,9 +18,13 @@ Make sure you have the proper system dependencies with
 
 ## Running DocumentLoader
 
-neo4j start
+*Note: make sure that neo4j is not running when starting DocumentLoader*
 
 1. Start `CrawlerManager` in that directory `rail server -p 9506`
 2. Start neo4j `rake neo4j:start`
 3. Then run `rails server`
 4. Go to [0.0.0.0:3000](http://0.0.0.0:3000) in a browser
+
+When your done running DocumentLoader
+
+1. Stop neo4j `rake neo4j:stop

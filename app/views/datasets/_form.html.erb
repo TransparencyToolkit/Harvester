@@ -1,13 +1,32 @@
 <%= form_for(@dataset) do |f| %>
-  <%= f.label :name %><br />
-  <%= f.text_field :name %><br /><br /><br />
+<div class="app-sidebars">
+  <div class="app-sidebars-small">
+    <h2>Details</h2>
+    <p>Selected Sources</p>
+    <ul class="list-items">
+      <li><i class="<%= @crawler["icon"] %>"></i> <%= @crawler["name"] %></li>
+    </ul>
 
-  <% 2.times do |count| %>
-    <%= render 'query_fields', count: count %>
-  <% end %>
-  
-  <%= hidden_field_tag 'source', params[:source] %>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <hr>
+    <a class="button text button-full" href="<%= datasets_path %>" class="button">Cancel & Start Again</a>
   </div>
+
+  <div class="app-sidebars-large">
+    <h2>Enter Terms</h2>
+    <p>Single terms or multiple are allowed and will be crawled as single queries</p>
+    <ol class="unstyled">
+      <% 2.times do |count| %>
+      <li>
+        <%= render 'query_fields', count: count %>
+        <hr>
+      </li>
+      <% end %>
+    </ol>
+    <%= hidden_field_tag 'source', params[:source] %>
+    <input class="button-full" type="submit" name="commit" value="Create Dataset">
+
+  </div>
+</div>
 <% end %>

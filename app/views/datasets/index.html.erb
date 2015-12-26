@@ -1,5 +1,23 @@
 <%= form_tag('/datasets/new', method: 'get') do %>
-<%= select_tag :source, options_for_select(@crawler_names) %>
-<%= submit_tag("Choose Datasource") %>
+<div class="wrapper">
+  <div class="app-title">
+    <h1><span>Step 1</span> Select a collection source</h1>
+  </div>
+  <div class="app-grid-items">
+    <% @crawlers.each do |crawler| %>
+    <div class="app-grid-item">
+       <h1><i class="<%= crawler["icon"] %>"></i> <%= crawler["name"] %></h1>
+       <p><%= crawler["description"] %></p>
+       <button name="source" value="<%= crawler["classname"] %>">+ Add Source</button>
+    </div>
+    <%end %>
+    <div href="javascript:void(0)" class="app-grid-item-not">
+      <div>
+        <h2>More Sources</h2>
+        <h2>Coming Soon</h2>
+        <p>Request a new service</p>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
-

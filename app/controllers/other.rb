@@ -8,8 +8,7 @@ class DatasetsController < ApplicationController
   end
 
   def new
-    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)
-    @input = @crawler["input_params"]
+    @input = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)["input_params"]
     @dataset = Dataset.new
   end
 
@@ -17,7 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.new(dataset_params)
     @dataset.save
     loop_and_run(params, @dataset)
-
+  
     respond_to do |format|
       if @dataset.save
         format.html { redirect_to @dataset, notice: 'Dataset was successfully created.' }
@@ -44,7 +43,7 @@ class DatasetsController < ApplicationController
   end
 
   private
-
+  
   # Generate value string name for files
   def val_string(value)
     value_str = ""
@@ -61,7 +60,7 @@ class DatasetsController < ApplicationController
     unless File.directory?(results_dir)
       Dir.mkdir(results_dir)
     end
-
+    
     # Set output filename based on output and timestamp
     filename = results_dir+out_file_name+Time.now.to_s.split(" ")[0].gsub("-", "")+".json"
     File.write(filename, print_data)
@@ -71,13 +70,17 @@ class DatasetsController < ApplicationController
   def save_data(results, dataset, params, out_file_name)
     results.each do |dataitem|
       # Create item for appropriate model
+      begin
       classname = get_item_classname(params["source"])
       item_values = gen_params_hash(dataitem)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
-
+      
       # Add association with dataset
       dataset.dataitems << item
       item.dataset = dataset
+      rescue
+        binding.pry
+      end
     end
 
     save_data_files(params, JSON.pretty_generate(results), out_file_name)
@@ -111,20 +114,19 @@ class DatasetsController < ApplicationController
   # Generate URL with params and crawler info
   def gen_query_url(query, params)
     @input_params = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)["input_params"]
-
+    
     # Gen url base
     url = "http://0.0.0.0:9506/crawlers?"
     url += "crawler="+params[:source]
-
+    
     # Add all params for dataset
     @input_params.each do |param, type|
-      par = query[param] ? Base64.encode64(query[param]).strip : ""
-      url += "&"+param+"="+par
+      url += "&"+param+"="+Base64.encode64(query[param]).strip
     end
-
+    
     return url
   end
-
+  
   # Use callbacks to share common setup or constraints between actions.
   def set_dataset
     @dataset = Dataset.find(params[:id])

@@ -16,17 +16,21 @@
   <div class="app-sidebars-large">
     <h2>Enter Terms</h2>
     <p>Single terms or multiple are allowed and will be crawled as single queries</p>
-    <ol class="unstyled">
-      <% 2.times do |count| %>
+    <ol class="unstyled" id="term-input-list">
       <li>
-        <%= render 'query_fields', count: count %>
-        <hr>
+        <%= render 'query_fields', count: 0 %>
       </li>
-      <% end %>
     </ol>
     <%= hidden_field_tag 'source', params[:source] %>
-    <input class="button-full" type="submit" name="commit" value="Create Dataset">
-
+    <a id="add-another-query" class="button info">+ Add Another Query</a>
+    <input class="button" type="submit" name="commit" value="Start Collecting">
   </div>
 </div>
 <% end %>
+
+<script type="text/template" id="template-add-term-input">
+<li>
+  <hr>
+  <%= render 'query_fields', count: "template" %>
+</li>
+</script>

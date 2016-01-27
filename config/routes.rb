@@ -6,12 +6,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'datasets#index'
   extend DataitemGen
-  @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
-  @crawlers.each do |crawler|
-    resource gen_class_name(crawler["name"]).to_sym, controller: 'dataitems'
+
+  begin
+    @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
+    @crawlers.each do |crawler|
+      resource gen_class_name(crawler["name"]).to_sym, controller: 'dataitems'
+    end
+  rescue RuntimeError => e
+    raise e if Rails.configuration.force_crawler_lookup == true
+
+    Rails.logger.warn("Crawlers could not be loaded during Rails startup - #{e.class} #{e.message}")
   end
-  
-  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

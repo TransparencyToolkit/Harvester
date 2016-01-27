@@ -39,5 +39,10 @@ module DocumentLoader
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # If set to true, any errors raised when trying to lookup the available crawlers in
+    # routes.rb will not be caught and application init will fail. If set to false, errors
+    # will be caught and logged as warnings
+    config.force_crawler_lookup = false
   end
 end

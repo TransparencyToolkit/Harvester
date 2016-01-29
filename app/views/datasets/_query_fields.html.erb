@@ -1,4 +1,8 @@
 <% @input.each do |field| %>
   <%= label_tag field[0].to_sym %>
-  <%= text_field_tag "input_query_fields[#{count}][#{field[0]}]" %>
+  <% if field[1] == "string" %>
+    <%= text_field_tag "input_query_fields[#{count}][#{field[0]}]" %>
+  <% elsif field[1] == "file" %>
+    <%= text_field_tag "input_query_fields[#{count}][#{field[0]}]" %>
+  <% end %>
 <% end %>

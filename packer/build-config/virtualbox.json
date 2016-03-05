@@ -1,0 +1,81 @@
+{
+  "variables": {
+    "home": "{{env `HOME`}}"
+  },
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "{{user `home`}}/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-trusty64/20151217.0.0/virtualbox/box.ovf",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "2048"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "packer/rails_startup.sh",
+      "destination": "/home/vagrant/.xprofile"
+    },
+    {
+      "type": "shell",
+      "script": "packer/setup_user.sh"
+    },
+    {
+      "type": "shell",
+      "script": "packer/install_deps.sh"
+    },
+    {
+      "type": "shell",
+      "script": "packer/checkout_repos.sh"
+    },
+    {
+      "type": "file",
+      "source": "packer/lightdm.conf",
+      "destination": "/tmp/lightdm.conf"
+    },
+    {
+      "type": "shell",
+      "script": "packer/install_desktop.sh"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/Harvester.desktop",
+      "destination": "/home/vagrant/Desktop/Harvester.desktop"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /home/vagrant/.config/xfce4/desktop/",
+        "/home/vagrant/.config/xfce4/",
+        "/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/icons.screen0-784x559.rc",
+      "destination": "/home/vagrant/.config/xfce4/desktop/icons.screen0-784x559.rc"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/helpers.rc",
+      "destination": "/home/vagrant/.config/xfce4/helpers.rc"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/xfce4-panel.xml",
+      "destination": "/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mv /tmp/lightdm.conf /etc/lightdm/lightdm.conf",
+        "sudo service lightdm restart"
+      ]
+    }
+  ]
+}

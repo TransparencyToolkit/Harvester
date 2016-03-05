@@ -1,0 +1,75 @@
+{
+  "builders": [
+    {
+      "type":         "null",
+      "ssh_host":     "127.0.0.1",
+      "ssh_port":     "2222",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "packer/rails_startup.sh",
+      "destination": "/home/vagrant/.xprofile"
+    },
+    {
+      "type": "shell",
+      "script": "packer/setup_user.sh"
+    },
+    {
+      "type": "shell",
+      "script": "packer/install_deps.sh"
+    },
+    {
+      "type": "shell",
+      "script": "packer/checkout_repos.sh"
+    },
+    {
+      "type": "file",
+      "source": "packer/lightdm.conf",
+      "destination": "/tmp/lightdm.conf"
+    },
+    {
+      "type": "shell",
+      "script": "packer/install_desktop.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /home/vagrant/Desktop",
+        "mkdir -p /home/vagrant/.config/xfce4/desktop/",
+        "mkdir -p /home/vagrant/.config/xfce4/",
+        "mkdir -p /home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/Harvester.desktop",
+      "destination": "/home/vagrant/Desktop/Harvester.desktop"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/icons.screen0-784x559.rc",
+      "destination": "/home/vagrant/.config/xfce4/desktop/icons.screen0-784x559.rc"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/helpers.rc",
+      "destination": "/home/vagrant/.config/xfce4/helpers.rc"
+    },
+    {
+      "type": "file",
+      "source": "packer/xfce-config/xfce4-panel.xml",
+      "destination": "/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mv /tmp/lightdm.conf /etc/lightdm/lightdm.conf",
+        "sudo service lightdm restart"
+      ]
+    }
+  ]
+}

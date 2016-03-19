@@ -13,6 +13,7 @@
 /tmp
 /db/neo4j/
 
-# ignore Vagrant working directory
+# ignore Vagrant and Packer working directories
 .vagrant/
 packer_cache/
+output-virtualbox-ovf/

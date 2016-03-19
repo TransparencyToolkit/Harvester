@@ -17,15 +17,6 @@
   ],
   "provisioners": [
     {
-      "type": "file",
-      "source": "packer/rails_startup.sh",
-      "destination": "/home/vagrant/.xprofile"
-    },
-    {
-      "type": "shell",
-      "script": "packer/setup_user.sh"
-    },
-    {
       "type": "shell",
       "script": "packer/install_deps.sh"
     },
@@ -34,31 +25,28 @@
       "script": "packer/checkout_repos.sh"
     },
     {
-      "type": "file",
-      "source": "packer/lightdm.conf",
-      "destination": "/tmp/lightdm.conf"
-    },
-    {
       "type": "shell",
       "script": "packer/install_desktop.sh"
     },
     {
       "type": "file",
-      "source": "packer/xfce-config/Harvester.desktop",
-      "destination": "/home/vagrant/Desktop/Harvester.desktop"
+      "source": "packer/rails_startup.sh",
+      "destination": "/home/vagrant/.xprofile"
     },
     {
       "type": "shell",
       "inline": [
+        "chmod +x /home/vagrant/.xprofile",
+        "mkdir -p /home/vagrant/Desktop",
         "mkdir -p /home/vagrant/.config/xfce4/desktop/",
-        "/home/vagrant/.config/xfce4/",
-        "/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/"
+        "mkdir -p /home/vagrant/.config/xfce4/",
+        "mkdir -p /home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/"
       ]
     },
     {
       "type": "file",
-      "source": "packer/xfce-config/icons.screen0-784x559.rc",
-      "destination": "/home/vagrant/.config/xfce4/desktop/icons.screen0-784x559.rc"
+      "source": "packer/xfce-config/Harvester.desktop",
+      "destination": "/home/vagrant/Desktop/Harvester.desktop"
     },
     {
       "type": "file",
@@ -69,6 +57,11 @@
       "type": "file",
       "source": "packer/xfce-config/xfce4-panel.xml",
       "destination": "/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
+    },
+    {
+      "type": "file",
+      "source": "packer/lightdm.conf",
+      "destination": "/tmp/lightdm.conf"
     },
     {
       "type": "shell",

@@ -5,13 +5,15 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'datasets#index'
+
   extend DataitemGen
   @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
   @crawlers.each do |crawler|
     resource gen_class_name(crawler["name"]).to_sym, controller: 'dataitems'
   end
-  
-  
+
+  # Sources
+  get 'datasources', to: 'datasets#sources'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

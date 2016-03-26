@@ -1,7 +1,10 @@
 class DatasetsController < ApplicationController
-  before_action :set_dataset, only: [:show, :edit, :update, :destroy]
 
   def index
+    @datasets = Dataset.all
+  end
+
+  def sources
     @datasets = Dataset.all
     @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
     @crawler_names = @crawlers.map{|c| c["classname"]}
@@ -20,8 +23,8 @@ class DatasetsController < ApplicationController
 
     respond_to do |format|
       if @dataset.save
-        format.html { redirect_to @dataset, notice: 'Dataset was successfully created.' }
-        format.json { render :show, status: :created, location: @dataset }
+        format.html { redirect_to action: "index", notice: 'Dataset was successfully created.' }
+        format.json { render action: "index", status: :created, location: @dataset }
       else
         format.html { render :new }
         format.json { render json: @dataset.errors, status: :unprocessable_entity }
@@ -33,13 +36,15 @@ class DatasetsController < ApplicationController
   def loop_and_run(params, dataset)
     params[:input_query_fields].each do |key, value|
       query = gen_query_url(value, params)
-      results = JSON.parse(Curl.get(query).body_str)
+      curl_url = Curl.get(query).body_str
+      results = JSON.parse(curl_url)
       save_data(results, dataset, params, val_string(value))
     end
   end
 
   # Put all items for dataset in JSON
   def show
+    set_dataset
     @print_data = gen_print_data(@dataset)
   end
 

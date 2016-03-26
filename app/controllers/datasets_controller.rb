@@ -19,7 +19,7 @@ class DatasetsController < ApplicationController
   def create
     @dataset = Dataset.new(dataset_params)
     @dataset.save
-    loop_and_run(params, @dataset)
+    loop_and_run(dataset_params, @dataset)
 
     respond_to do |format|
       if @dataset.save
@@ -79,7 +79,7 @@ class DatasetsController < ApplicationController
       classname = get_item_classname(params["source"])
       item_values = gen_params_hash(dataitem)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
-
+      
       # Add association with dataset
       dataset.dataitems << item
       item.dataset = dataset
@@ -137,6 +137,7 @@ class DatasetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dataset_params
-    params.require(:dataset).permit(:name, :input_query_fields)
+    name = params.require(:dataset).permit(:name)
+    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)})
   end
 end

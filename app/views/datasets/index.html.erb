@@ -10,7 +10,7 @@
     <a href="/datasources/"><i class="icon-plus"></i> New Dataset</a>
   </div>
   <% @datasets.each do |dataset| %>
-
+  <% get_count(dataset) %>
     <h3><%= dataset.name %></h3>
 
     View:

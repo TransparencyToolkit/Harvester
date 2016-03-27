@@ -17,8 +17,13 @@ class DatasetsController < ApplicationController
   end
 
   def create
+    # Setup dataset and terms
     @dataset = Dataset.new(dataset_params)
+    created_terms = gen_new_terms(dataset_params[:input_query_fields])
     @dataset.save
+    associate_terms_with_dataset(@dataset, created_terms)
+
+    # Collect data
     loop_and_run(dataset_params, @dataset)
 
     respond_to do |format|
@@ -34,11 +39,12 @@ class DatasetsController < ApplicationController
 
   # Loop through all terms and run
   def loop_and_run(params, dataset)
-    params[:input_query_fields].each do |key, value|
-      query = gen_query_url(value, params)
+    dataset.terms.each do |term|
+      term_query = term[:term_query]
+      query = gen_query_url(term_query, params)
       curl_url = Curl.get(query).body_str
       results = JSON.parse(curl_url)
-      save_data(results, dataset, params, val_string(value))
+      save_data(results, dataset, term, params, val_string(term_query))
     end
   end
 
@@ -62,7 +68,7 @@ class DatasetsController < ApplicationController
   # Save folders of data files
   def save_data_files(params, print_data, out_file_name)
     # Create results directory with name based on dataset
-    results_dir = ENV['HOME']+"/Data/KG/"+params["dataset"]["name"].gsub(" ", "_").gsub("/", "-")+"_"+params["source"]+"/"
+    results_dir = ENV['HOME']+"/Data/KG/"+params["name"].gsub(" ", "_").gsub("/", "-")+"_"+params["source"]+"/"
     unless File.directory?(results_dir)
       Dir.mkdir(results_dir)
     end
@@ -72,20 +78,44 @@ class DatasetsController < ApplicationController
     File.write(filename, print_data)
   end
 
+  # Add has_many association between two objects both ways
+  def add_association(field1, item2)
+    field1 << item2
+  end
+
   # Save all data
-  def save_data(results, dataset, params, out_file_name)
+  def save_data(results, dataset, term, params, out_file_name)
     results.each do |dataitem|
       # Create item for appropriate model
       classname = get_item_classname(params["source"])
       item_values = gen_params_hash(dataitem)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
       
-      # Add association with dataset
-      dataset.dataitems << item
-      item.dataset = dataset
+      # Add association with dataset and term
+      add_association(dataset.dataitems, item)
+      add_association(term.dataitems, item)
+    end
+    
+    save_data_files(params, JSON.pretty_generate(results), out_file_name)
+  end
+
+  def associate_terms_with_dataset(dataset, term_list)
+    term_list.each do |term|
+      add_association(dataset.terms, term)
+    end
+  end
+
+  # Creates a new term for each item in list
+  def gen_new_terms(term_list)
+    all_terms = Array.new
+
+    # Make new term for each search term
+    term_list.each do |k, v|
+      all_terms.push(Term.create({term_query: v}))
     end
 
-    save_data_files(params, JSON.pretty_generate(results), out_file_name)
+    # Return the created terms
+    return all_terms
   end
 
   # Generate parameters hash

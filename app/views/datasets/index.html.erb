@@ -7,19 +7,29 @@
 <div class="wrapper">
   <div class="app-title">
     <h1>Your Harvests</h1>
-    <a href="/datasources/"><i class="icon-plus"></i> New Dataset</a>
   </div>
   <h2>Number of Results Harvested: <%= get_overall_count %></h2>
+
+  <div class="three-columns">
+    <div class="one-column">
+      <button class="button button-full"><i class="icon-plus"></i> Add Datasets</button>
+    </div>
+    <div class="one-column">
+      <button class="button button-full"><i class="icon-plus"></i> Add Query</button>
+    </div>
+    <div class="one-column">
+      <button class="button button-full"><i class="icon-logo"></i>View in LookingGlass</button>
+    </div>
+  </div>
+
   <% @datasets.each do |dataset| %>
- 
-  <h3><%= dataset.name %></h3>
-  <h3>Count: <%= get_count_per_dataset(dataset) %></h3>
+
+    <h3><%= dataset.name %></h3>
+    <h3>Count: <%= get_count_per_dataset(dataset) %></h3>
 
     View:
     <a class="button info" href="/datasets/<%= dataset.id %>">Dataset</a><br>
-    <a class="button info" href="http://localhost:3000">Looking Glass</a>
     <hr>
-
   <% end %>
 
 </div>

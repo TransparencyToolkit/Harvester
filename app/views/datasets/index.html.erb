@@ -9,9 +9,11 @@
     <h1>Your Harvests</h1>
     <a href="/datasources/"><i class="icon-plus"></i> New Dataset</a>
   </div>
+  <h2>Number of Results Harvested: <%= get_overall_count %></h2>
   <% @datasets.each do |dataset| %>
-  <% get_count(dataset) %>
-    <h3><%= dataset.name %></h3>
+ 
+  <h3><%= dataset.name %></h3>
+  <h3>Count: <%= get_count_per_dataset(dataset) %></h3>
 
     View:
     <a class="button info" href="/datasets/<%= dataset.id %>">Dataset</a><br>

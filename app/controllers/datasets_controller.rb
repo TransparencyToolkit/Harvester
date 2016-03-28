@@ -96,7 +96,7 @@ class DatasetsController < ApplicationController
       add_association(term.dataitems, item)
     end
 
-    index_elastic(term.dataitems, params["source"])
+    index_elastic(term.dataitems, term, params["source"])
     save_data_files(params, JSON.pretty_generate(results), out_file_name)
   end
 

@@ -1,5 +1,5 @@
 class DatasetsController < ApplicationController
-
+  include IndexData
   def index
     @datasets = Dataset.all
   end
@@ -95,7 +95,8 @@ class DatasetsController < ApplicationController
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
     end
-    
+
+    index_elastic(term.dataitems, params["source"])
     save_data_files(params, JSON.pretty_generate(results), out_file_name)
   end
 

@@ -1,35 +1,30 @@
-<% if params['notice'] %>
-<div class="wrapper">
-  <div class="app-notice"><%= params['notice'] %></div>
-</div>
-<% end %>
-
 <div class="wrapper">
   <div class="app-title">
-    <h1>Your Harvests</h1>
+    <h1><%= get_overall_count %> Results Harvested</h1>
   </div>
-  <h2>Number of Results Harvested: <%= get_overall_count %></h2>
 
-  <div class="three-columns">
+  <div class="grid-two">
     <div class="one-column">
-      <button class="button button-full"><i class="icon-plus"></i> Add Datasets</button>
+      <a class="button primary button-full" href="/datasources"><i class="icon-plus"></i> Add New Collection</a>
     </div>
     <div class="one-column">
-      <button class="button button-full"><i class="icon-plus"></i> Add Query</button>
-    </div>
-    <div class="one-column">
-      <button class="button button-full"><i class="icon-logo"></i>View in LookingGlass</button>
+      <a class="button primary button-full" href="http://localhost:3000"><i class="icon-logo"></i> View in LookingGlass</a>
     </div>
   </div>
 
+  <div class="app-content">
   <% @datasets.each do |dataset| %>
-
-    <h3><%= dataset.name %></h3>
-    <h3>Count: <%= get_count_per_dataset(dataset) %></h3>
-
-    View:
-    <a class="button info" href="/datasets/<%= dataset.id %>">Dataset</a><br>
+    <div class="grid-three">
+      <div class="two-column">
+        <h2><% if dataset.name != "" %><%= dataset.name %><% else %><span>(No Title)</span><% end %></h2>
+        <% if get_count_per_dataset(dataset) > 0 %><%= get_count_per_dataset(dataset) %><% else %>No<% end %> items collected
+      </div>
+      <div class="one-column text-right">
+        <a class="button info" href="/datasets/<%= dataset.id %>">View Collection</a>
+      </div>
+    </div>
     <hr>
   <% end %>
+  </div>
 
 </div>

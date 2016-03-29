@@ -6,7 +6,7 @@
   <title>Harvester</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="/css/screen.css">
+  <link rel="stylesheet" href="http://127.0.0.1:4000/assets/css/screen.css">
   <%= csrf_meta_tags %>
 </head>
 <body class="default gray">
@@ -31,6 +31,12 @@
       -->
     </div>
   </header>
+
+  <% if params['notice'] %>
+  <div class="notifications">
+    <div class="notification success"><%= params['notice'] %></div>
+  </div>
+  <% end %>
 
   <%= yield %>
 

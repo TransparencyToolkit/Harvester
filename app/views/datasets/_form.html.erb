@@ -10,7 +10,7 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
     <hr>
-    <a class="button text button-full" href="<%= datasets_path %>" class="button">Cancel & Start Again</a>
+    <a class="button warning button-full" href="<%= datasets_path %>" class="button">Cancel & Start Again</a>
   </div>
 
   <div class="app-sidebars-large">
@@ -22,8 +22,8 @@
       </li>
     </ol>
     <%= hidden_field_tag 'source', params[:source] %>
-    <a id="add-another-query" class="button info">+ Add Another Query</a>
-    <input class="button" type="submit" name="commit" value="Start Collecting">
+    <a id="add-another-query" class="button info">+ Add Another Term</a>
+    <button class="button pull-right" type="submit" name="commit"><i class="icon-checkmark"></i> Start Collecting</button>
   </div>
 </div>
 <% end %>

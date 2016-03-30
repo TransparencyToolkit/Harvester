@@ -90,7 +90,7 @@ class DatasetsController < ApplicationController
       classname = get_item_classname(params["source"])
       item_values = gen_params_hash(dataitem)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
-      
+
       # Add association with dataset and term
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
@@ -141,7 +141,7 @@ class DatasetsController < ApplicationController
     result_data = dataset.dataitems.inject([]) do |all_items, item|
       all_items.push(item.as_json.first[1])
     end
-    print_data = JSON.pretty_generate(result_data)
+    result_data
   end
 
   # Generate URL with params and crawler info

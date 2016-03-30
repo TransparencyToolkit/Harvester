@@ -6,13 +6,13 @@
   <title>Harvester</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="http://127.0.0.1:4000/assets/css/screen.css">
+  <link rel="stylesheet" href="/css/screen.css">
   <%= csrf_meta_tags %>
 </head>
 <body class="default gray">
   <header class="navigation" role="banner">
     <div class="navigation-wrapper">
-      <a href="javascript:void(0)" class="name">
+      <a href="/" class="name">
         <i class="icon-harvester"></i> Harvester
       </a>
       <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
@@ -40,7 +40,15 @@
 
   <%= yield %>
 
+  <script src="/js/jquery-2.2.2.min.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script>
+  $(document).ready(function() {
+    $('.expander-trigger').click(function() {
+      $(this).toggleClass("expander-hidden")
+    })
+  })
+  </script>
 
 </body>
 </html>

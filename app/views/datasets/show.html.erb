@@ -1,10 +1,54 @@
 <div class="wrapper">
   <div class="app-title">
-    <h1><span>Dataset:</span> Drones</h1>
+    <h1><span>Collection:</span> <%= @dataset.name %></h1>
     <a href="#"><i class="icon-modified"></i> Edit</a>
   </div>
-</div>
 
-<div class="wrapper">
-  <%= @print_data %>
+  <div class="app-content">
+    <div class="grid-three">
+      <div class="two-column">
+        <h2><% if get_count_per_dataset(@dataset) > 0 %><%= get_count_per_dataset(@dataset) %><% else %>No<% end %> Items</h2>
+      </div>
+      <div class="one-column text-right">
+      <% @crawlers.each do |crawler| %>
+        <% if crawler["classname"] == @dataset.source %>
+        <i class="<%= crawler["icon"] %>"></i> <%= crawler["name"] %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <%# @dataset.inspect %>
+
+    <h3>Terms</h3>
+    <ul class="list-items">
+      <% @dataset.input_query_fields.each do |query_fields| %>
+      <li>
+        <% query_fields.each do |query, value| %>
+        <% if query["search_query"] %>
+        <i class="icon-terms"></i> <%= query["search_query"] %> <%= query["location"] %>
+        <% elsif query["directory"] %>
+        <i class="icon-folder"></i> Folder: <span><%= query["directory"] %></span>
+        <% end %>
+        <% end %>
+        <!-- <span>Dec 27, 2015</span> -->
+        <a href="#" class="remove danger pull-right"><i class="icon-trash"></i> Delete</a>
+        <a href="#" class="view info pull-right"><i class="icon-query"></i> Re-Crawl</a>
+      </li>
+    <% end %>
+    </ul>
+    <hr>
+
+    <% if @print_data.empty? %>
+    <h3>Shucks</h3>
+    <p>No data found in this collection</p>
+    <% else %>
+    <h3>RAW Data</h3>
+    <div class="expander">
+      <a href="javascript:void(0)" class="expander-trigger expander-hidden"> Expand to see data</a>
+      <div class="expander-content">
+        <%= JSON.pretty_generate(@print_data) %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>

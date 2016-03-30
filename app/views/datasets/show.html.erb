@@ -7,7 +7,7 @@
   <div class="app-content">
     <div class="grid-three">
       <div class="two-column">
-        <h2><% if get_count_per_dataset(@dataset) > 0 %><%= get_count_per_dataset(@dataset) %><% else %>No<% end %> Items</h2>
+        <h2><% if get_count_per_dataset(@dataset) > 0 %><%= get_count_per_dataset(@dataset) %><% else %>No<% end %> Items Collected</h2>
       </div>
       <div class="one-column text-right">
       <% @crawlers.each do |crawler| %>
@@ -19,6 +19,7 @@
     </div>
     <%# @dataset.inspect %>
 
+    <% if @dataset.input_query_fields %>
     <h3>Terms</h3>
     <ul class="list-items">
       <% @dataset.input_query_fields.each do |query_fields| %>
@@ -36,11 +37,15 @@
       </li>
     <% end %>
     </ul>
+    <% else %>
+    <h3>Hmm</h3>
+    <p>No search terms were specified in this collection.</p>
+    <% end %>
     <hr>
 
     <% if @print_data.empty? %>
     <h3>Shucks</h3>
-    <p>No data found in this collection</p>
+    <p>No raw data found in this collection</p>
     <% else %>
     <h3>RAW Data</h3>
     <div class="expander">

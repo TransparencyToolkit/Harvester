@@ -1,5 +1,5 @@
 class Dataitem
-  include Neo4j::ActiveNode
-  has_many :both, :dataset, type: 'data_in_set'
-  has_many :both, :terms, type: 'data_collected_on_topic'
+  include Mongoid::Document
+  belongs_to :dataset
+  belongs_to :term
 end

@@ -45,5 +45,6 @@ group :development, :test do
   gem 'spring'
 end
 
-
-gem 'neo4j', '~> 5.2.7'
+gem 'bson_ext'
+#gem 'neo4j', '~> 5.2.7'
+gem 'mongoid', github: 'mongoid/mongoid'

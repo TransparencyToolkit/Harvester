@@ -90,7 +90,7 @@ class DatasetsController < ApplicationController
       classname = get_item_classname(params["source"])
       item_values = gen_params_hash(dataitem)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
-
+      
       # Add association with dataset and term
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
@@ -139,7 +139,7 @@ class DatasetsController < ApplicationController
   # Generate JSON with all data to print on show view
   def gen_print_data(dataset)
     result_data = dataset.dataitems.inject([]) do |all_items, item|
-      all_items.push(item.as_json.first[1])
+      all_items.push(Dataitem.find(item).as_json)
     end
     result_data
   end

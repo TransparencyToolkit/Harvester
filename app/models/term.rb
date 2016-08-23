@@ -1,9 +1,8 @@
 class Term
-  include Neo4j::ActiveNode
-  property :term_query
-  serialize :term_query, Hash
-
+  include Mongoid::Document
+  field :term_query, type: Hash
+  
   # Associations
-  has_many :both, :dataitems, type: 'data_collected_on_topic'
-  has_many :both, :datasets, type: 'search_term_in_dataset'
+  belongs_to :dataset
+  has_many :dataitems
 end

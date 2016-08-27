@@ -19,6 +19,16 @@ class DatasetsController < ApplicationController
   def update
     @dataset = Dataset.find(params[:id])
 
+    # Update the selectors
+    find_updated_selectors(dataset_params)
+    update_selectors
+    @dataset.update_attributes(dataset_params)
+
+    # Collect data and save selectors
+    if params.include?("commit")
+      loop_and_run(dataset_params, @dataset)
+    end
+    
     respond_to do |format|
       if @dataset.update_attributes(dataset_params)
         format.html { redirect_to @dataset, notice: 'Dataset was successfully updated.' }
@@ -68,6 +78,34 @@ class DatasetsController < ApplicationController
 
   private
 
+  def find_updated_selectors(dataset_params)
+    @updated_selectors = Array.new
+
+    # Add all changed items to updated_items
+    @dataset.terms.each do |selector|
+      updated_selector = dataset_params["input_query_fields"][selector.selector_num]
+      if selector.term_query != updated_selector
+        @updated_selectors.push({term_query: updated_selector, selector_num: selector.selector_num, id: selector.id})
+      end
+    end
+
+    # Add all additional selectors to new
+    max_count = @dataset.terms.count-1
+    @new_selectors = dataset_params["input_query_fields"].select{|k,v| k.to_i > max_count}
+  end
+
+  # Update individual selectors
+  def update_selectors
+    # Add new terms
+    created_terms = gen_new_terms(@new_selectors)
+    associate_terms_with_dataset(@dataset, created_terms)
+
+    # Update existing selectors
+    @updated_selectors.each do |selector|
+      Term.find(selector[:id]).update_attributes(selector)
+    end
+  end
+  
   # Also collect data
   def collect_data(dataset_params)
     loop_and_run(dataset_params, @dataset)
@@ -158,10 +196,10 @@ class DatasetsController < ApplicationController
   # Creates a new term for each item in list
   def gen_new_terms(term_list)
     all_terms = Array.new
-
+    
     # Make new term for each search term
     term_list.each do |k, v|
-      all_terms.push(Term.create({term_query: v}))
+      all_terms.push(Term.create({term_query: v, selector_num: k}))
     end
 
     # Return the created terms

@@ -17,23 +17,16 @@ class DatasetsController < ApplicationController
   end
 
   def create
-    # Setup dataset and terms
-    @dataset = Dataset.new(dataset_params)
-    created_terms = gen_new_terms(dataset_params[:input_query_fields])
-    @dataset.save
-    associate_terms_with_dataset(@dataset, created_terms)
-
-    # Collect data
-    loop_and_run(dataset_params, @dataset)
-
-    respond_to do |format|
-      if @dataset.save
-        format.html { redirect_to action: "index", notice: 'Dataset was successfully created.' }
-        format.json { render action: "index", status: :created, location: @dataset }
-      else
-        format.html { render :new }
-        format.json { render json: @dataset.errors, status: :unprocessable_entity }
-      end
+    # Save the dataset
+    save_dataset(dataset_params)
+                 
+    # Just show selectors saved
+    if params.include?("save")
+      save_success
+      
+    # Collect data and save selectors
+    elsif params.include?("commit")
+      collect_data(dataset_params)
     end
   end
 
@@ -55,6 +48,43 @@ class DatasetsController < ApplicationController
   end
 
   private
+
+  # Also collect data
+  def collect_data(dataset_params)
+    loop_and_run(dataset_params, @dataset)
+
+    respond_to do |format|
+      if @dataset.save
+        format.html { redirect_to action: "index", notice: 'Dataset was successfully collected.' }
+        format.json { render action: "index", status: :created, location: @dataset }
+      else
+        format.html { render :new }
+        format.json { render json: @dataset.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # Just save dataset
+  def save_dataset(dataset_params)
+    # Setup dataset and terms 
+    @dataset = Dataset.new(dataset_params)
+    created_terms = gen_new_terms(dataset_params[:input_query_fields])
+    @dataset.save
+    associate_terms_with_dataset(@dataset, created_terms)
+  end
+
+  # Show it successfully saved
+  def save_success
+    respond_to do |format|
+      if @dataset.save
+        format.html { redirect_to action: "index", notice: 'Dataset was successfully saved.' }
+        format.json { render action: "index", status: :created, location: @dataset }
+      else
+        format.html { render :new }
+        format.json { render json: @dataset.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # Generate value string name for files
   def val_string(value)

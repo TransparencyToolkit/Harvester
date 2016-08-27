@@ -1,0 +1,39 @@
+<%= form_for(@dataset) do |f| %>
+<div class="app-sidebars">
+  <div class="app-sidebars-small">
+    <h2>Details</h2>
+    <p>Selected Sources</p>
+    <ul class="list-items">
+      <li><i class="<%= @crawler["icon"] %>"></i> <%= @crawler["name"] %></li>
+    </ul>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <hr>
+    <a class="button warning button-full" href="<%= datasets_path %>" class="button">Cancel & Start Again</a>
+  </div>
+
+  <div class="app-sidebars-large">
+    <h2>Enter Terms</h2>
+    <p>Single terms or multiple are allowed and will be crawled as single queries</p>
+    <ol class="unstyled" id="term-input-list">
+      <% @dataset.input_query_fields.each do |in_f| %>
+      <li>
+         <%= render 'edit_query_fields', count: in_f[0], in_f: in_f[1] %>
+      </li>
+      <% end %>
+    </ol>
+    <%= hidden_field_tag 'source', @dataset.source %>
+    <a id="add-another-query" class="button info">+ Add Another Term</a>
+    <button class="button pull-center" type="submit" name="save"><i class="icon-checkmark"></i> Save Selectors</button>
+    <button class="button pull-right" type="submit" name="commit"><i class="icon-checkmark"></i> Start Collecting</button>
+  </div>
+</div>
+<% end %>
+
+<script type="text/template" id="template-add-term-input">
+<li>
+  <hr>
+  <%= render 'query_fields', count: "template" %>
+</li>
+</script>

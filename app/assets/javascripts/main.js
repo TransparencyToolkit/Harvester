@@ -55,11 +55,11 @@ $(document).ready(function() {
     e.preventDefault()
 
     // For new input #
-    var input_number = $('#term-input-list li').length.toString()
+      var input_number = $('#term-input-list li').length.toString()
 
     // Prepare HTML
     var inputs_template = $('#template-add-term-input').html()
-    var template_name = inputs_template.replace('[template]', '['+input_number+']')
+    var template_name = inputs_template.replace(/\[template\]/g, '['+input_number+']')
     var template_fixed = template_name.replace('_template_', '_'+input_number+'_').trim()
 
     // Inject

@@ -10,6 +10,25 @@ class DatasetsController < ApplicationController
     @crawler_names = @crawlers.map{|c| c["classname"]}
   end
 
+  def edit
+    @dataset = Dataset.find(params[:id])
+    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+@dataset.source).body_str)
+    @input = @crawler["input_params"]
+  end
+
+  def update
+    @dataset = Dataset.find(params[:id])
+
+    respond_to do |format|
+      if @dataset.update_attributes(dataset_params)
+        format.html { redirect_to @dataset, notice: 'Dataset was successfully updated.' }
+      else
+        format.html { render :new }
+        format.json { render json: @dataset.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def new
     @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)
     @input = @crawler["input_params"]
@@ -19,7 +38,7 @@ class DatasetsController < ApplicationController
   def create
     # Save the dataset
     save_dataset(dataset_params)
-                 
+         
     # Just show selectors saved
     if params.include?("save")
       save_success

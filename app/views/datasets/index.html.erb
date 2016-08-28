@@ -20,7 +20,11 @@
         <% if get_count_per_dataset(dataset) > 0 %><%= get_count_per_dataset(dataset) %><% else %>No<% end %> items collected
       </div>
       <div class="one-column text-right">
-        <a class="button info" href="/datasets/<%= dataset.id %>">View Collection</a>
+        <a class="button info" href="/datasets/<%= dataset.id %>">View
+          Collection</a>  <br /><br />
+	<%= link_to raw("<i class='icon-trash'></i> Delete"), dataset,
+	                            method: :delete, class: "remove danger
+          pull-right button" %>
       </div>
     </div>
     <hr>

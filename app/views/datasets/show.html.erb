@@ -1,6 +1,8 @@
 <div class="wrapper">
   <div class="app-title">
     <h1><span>Collection:</span> <%= @dataset.name %></h1>
+    <%= link_to raw("<i class='icon-trash'></i> Delete"), @dataset,
+		        method: :delete, class: "remove danger pull-right button" %>
     <a href="/datasets/<%= @dataset.id%>/edit"><i class="icon-modified"></i> Edit</a>
   </div>
 

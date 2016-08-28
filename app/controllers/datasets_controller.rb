@@ -4,6 +4,21 @@ class DatasetsController < ApplicationController
     @datasets = Dataset.all
   end
 
+  def destroy
+    @dataset = Dataset.find(params[:id])
+
+    # Delete associated terms and items
+    @dataset.terms.each{|d| d.delete}
+    @dataset.dataitems.each{|z| z.delete}
+    
+    # Destroy and show notification
+    respond_to do |format|
+      if @dataset.destroy
+        format.html { redirect_to action: "index", notice: 'Collection was successfully deleted' }
+      end
+    end
+  end
+
   def sources
     @datasets = Dataset.all
     @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)

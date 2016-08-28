@@ -17,22 +17,19 @@
       <% end %>
       </div>
     </div>
-    <%# @dataset.inspect %>
 
     <% if @dataset.input_query_fields %>
     <h3>Terms</h3>
     <ul class="list-items">
-      <% @dataset.input_query_fields.each do |query_fields| %>
+      <% @dataset.terms.each do |query_fields| %>
       <li>
-        <% query_fields.each do |query, value| %>
-        <% if query["search_query"] %>
-        <i class="icon-terms"></i> <%= query["search_query"] %> <%= query["location"] %>
-        <% elsif query["directory"] %>
-        <i class="icon-folder"></i> Folder: <span><%= query["directory"] %></span>
+	<i class="icon-terms"></i>
+        <% query_fields.term_query.each do |query, value| %>
+          <%= value %>
         <% end %>
-        <% end %>
-        <!-- <span>Dec 27, 2015</span> -->
-        <a href="#" class="remove danger pull-right"><i class="icon-trash"></i> Delete</a>
+
+	<%= link_to raw("<i class='icon-trash'></i> Delete"), query_fields,
+	method: :delete, class: "remove danger pull-right" %>
         <a href="#" class="view info pull-right"><i class="icon-query"></i> Re-Crawl</a>
       </li>
     <% end %>

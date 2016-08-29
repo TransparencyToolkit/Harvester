@@ -1,10 +1,6 @@
 require 'pry'
 
 class TermsController < ApplicationController
-  def create
-    @term = Term.new(term_params)
-  end
-
   def destroy
     @term = Term.find(params[:id])
     @dataset = @term.dataset

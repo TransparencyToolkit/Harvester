@@ -1,5 +1,6 @@
 class DatasetsController < ApplicationController
   include IndexData
+  include TagGen
   def index
     @datasets = Dataset.all
   end
@@ -138,8 +139,11 @@ class DatasetsController < ApplicationController
 
   # Just save dataset
   def save_dataset(dataset_params)
-    # Setup dataset and terms 
+    # Setup dataset
+    dataset_params = add_collection_tags(dataset_params)
     @dataset = Dataset.new(dataset_params)
+
+    # Setup selectors
     created_terms = gen_new_terms(dataset_params[:input_query_fields])
     @dataset.save
     associate_terms_with_dataset(@dataset, created_terms)
@@ -214,7 +218,7 @@ class DatasetsController < ApplicationController
     
     # Make new term for each search term
     term_list.each do |k, v|
-      all_terms.push(Term.create({term_query: v, selector_num: k}))
+      all_terms.push(Term.create({term_query: v, selector_num: k}.merge(add_selector_tags(v))))
     end
 
     # Return the created terms

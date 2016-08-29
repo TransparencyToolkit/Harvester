@@ -5,6 +5,7 @@ class Dataset
   field :name
   field :input_query_fields, type: Hash
   field :source
+  field :collection_tag
   
   # Associations
   has_many :terms

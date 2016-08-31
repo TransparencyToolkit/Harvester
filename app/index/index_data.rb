@@ -1,5 +1,7 @@
 module IndexData
   def index_elastic(data, term, source)
+    gen_dataspec(source)
+    
     # Extract all items and IDs, save in hash, in arr
     extract_arr = JSON.pretty_generate(gen_extract_arr(data, term, source))
 
@@ -25,13 +27,14 @@ module IndexData
     id = JSON.parse(data_item.to_json)["_id"]["$oid"]
 
     # Get dataset name and source
-    dataset_name = term.term_query.inject(""){|str, k| str+=k[1] if k[1]}
     data_source = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["name"]
 
     # Merge in fields and return
-    item_fields.merge!(dataset_name: dataset_name)
-    item_fields.merge!(search_terms: dataset_name)
+    item_fields.merge!(dataset_name: data_item.term.collection_tag)
+    item_fields.merge!(search_terms: data_item.term.selector_tag)
+    item_fields.merge!(overall_tag: data_item.term.overall_tag)
     item_fields.merge!(data_source: data_source)
+    
     return JSON.pretty_generate(item_fields), id
   end
 

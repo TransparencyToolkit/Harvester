@@ -9,6 +9,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
+    remove_item_elastic(@dataset.dataitems)
     @dataset.terms.each{|d| d.delete}
     @dataset.dataitems.each{|z| z.delete}
     

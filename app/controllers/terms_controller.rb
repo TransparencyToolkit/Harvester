@@ -1,12 +1,15 @@
 require 'pry'
 
 class TermsController < ApplicationController
+  include IndexData
+  
   def destroy
     @term = Term.find(params[:id])
     @dataset = @term.dataset
     remove_renum_dataset
 
     # Destroy associated data items
+    remove_item_elastic(@term.dataitems)
     @term.dataitems.each{|d| d.delete}
 
     respond_to do |format|

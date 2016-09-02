@@ -1,18 +1,21 @@
-DocumentLoader
-==============
+Harvester
+=========
 
-Web interface and tool to calls various web and data scrawlers!
+Web interface and tool to call various web and data crawlers via [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager), using mongodb for persistence and loading documents to [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass).
+
+Harvester depends on:
+- [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) a web interface to search, filter, and browse any JSON data. Includes full text, categorical data and search interface with elasticsearch backend.
+- [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager) an API for running and managing crawlers
 
 ## Installing
 
 Make sure you have the proper system dependencies with
 
-- Install [neo4j](http://debian.neo4j.org)
 - Intall Ruby on Rails
 - On Debian, install depedencies:
-  - `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev`
-- Get the DocumentLoader code `git clone https://github.com/TransparencyToolkit/DocumentLoader`
-- Install Ruby dependencies from `cd DocumentLoader` and then `bundle install`
+  - `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev mongodb`
+- Get the Harvester code `git clone https://github.com/TransparencyToolkit/Harvester`
+- Install Ruby dependencies from `cd Harvester` and then `bundle install`
 - Download and install [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager)
 - Download & install [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) and it's depedencies
 
@@ -51,9 +54,7 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 ## Running Everything
 
 
-**Start DocumentLoader**
-
-*Note: make sure that neo4j is not running when starting DocumentLoader*
+**Start CrawlerManager**
 
 1. Start `CrawlerManager` in that directory `rails server -p 9506`
 
@@ -64,7 +65,7 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 
 **Start Harvester**
 
-1. Start neo4j `rake neo4j:start`
+1. Make sure mongodb is running on your system
 2. Then run Harvester with `rails server -p 3333`
 3. Go to [0.0.0.0:3000](http://0.0.0.0:3333) in a browser
 
@@ -79,9 +80,3 @@ Crawling some sites using tools like Tor or VPNs sometimes require solving of
 CAPTCHA's, Harvester can support this you just need to do the following:
 
 ..........To be filled out..................
-
-## Shutting Down
-
-*When your done running DocumentLoader*
-
-1. From within the `Harvester` repo, stop neo4j with `rake neo4j:stop`

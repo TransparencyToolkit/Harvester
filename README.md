@@ -1,7 +1,11 @@
-DocumentLoader
-==============
+Harvester
+=========
 
-Web interface and tool to calls various web and data scrawlers!
+Web interface and tool to call various web and data crawlers via [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager), using mongodb for persistence and loading documents to [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass).
+
+Harvester depends on:
+- [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) a web interface to search, filter, and browse any JSON data. Includes full text, categorical data and search interface with elasticsearch backend.
+- [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager) an API for running and managing crawlers
 
 ## Installing
 
@@ -10,8 +14,8 @@ Make sure you have the proper system dependencies with
 - Intall Ruby on Rails
 - On Debian, install depedencies:
   - `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev mongodb`
-- Get the DocumentLoader code `git clone https://github.com/TransparencyToolkit/DocumentLoader`
-- Install Ruby dependencies from `cd DocumentLoader` and then `bundle install`
+- Get the Harvester code `git clone https://github.com/TransparencyToolkit/Harvester`
+- Install Ruby dependencies from `cd Harvester` and then `bundle install`
 - Download and install [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager)
 - Download & install [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) and it's depedencies
 
@@ -50,7 +54,7 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 ## Running Everything
 
 
-**Start DocumentLoader**
+**Start CrawlerManager**
 
 1. Start `CrawlerManager` in that directory `rails server -p 9506`
 

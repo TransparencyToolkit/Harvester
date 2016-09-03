@@ -1,4 +1,4 @@
-<%= form_for(@dataset) do |f| %>
+<%= form_for @dataset, html: {multipart: true}  do |f| %>
 <div class="app-sidebars">
   <div class="app-sidebars-small">
     <h2>Details</h2>
@@ -14,19 +14,20 @@
   </div>
 
   <div class="app-sidebars-large">
-    <h2>Enter Selectors</h2>
-    <p>Single selectors or multiple are allowed and will be crawled as single queries</p>
+    <h2>Upload Selector List</h2>
+    <p>Upload a JSON list of selectors. The keys should be the names of the
+    fields for the data source as specified in CrawlerManager. If you aren't
+    adding selectors from a pre-existing list in bulk, the normal selector
+    input form is a better option.</p>
     <ol class="unstyled" id="term-input-list">
-      <% @dataset.input_query_fields.each do |in_f| %>
       <li>
-         <%= render 'edit_query_fields', count: in_f[0], in_f: in_f[1] %>
+	<%= f.label :selector_file %>
+        <%= f.file_field :selector_file %>
       </li>
-      <% end %>
     </ol>
-    <%= hidden_field_tag 'source', @dataset.source %>
-    <a id="add-another-query" class="button info">+ Add Another Term</a>
-    <button class="button pull-center" type="submit" name="save"><i class="icon-checkmark"></i> Save Selectors</button>
+    <%= hidden_field_tag 'source', params[:source] %>
     <button class="button pull-right" type="submit" name="commit"><i class="icon-checkmark"></i> Start Collecting</button>
+    <button class="button pull-right" type="submit" name="save"><i class="icon-checkmark"></i> Save Selectors</button>
   </div>
 </div>
 <% end %>

@@ -35,7 +35,7 @@ class DatasetsController < ApplicationController
 
   def update
     @dataset = Dataset.find(params[:id])
-
+    binding.pry
     # Update the selectors
     find_updated_selectors(dataset_params)
     update_selectors
@@ -144,8 +144,42 @@ class DatasetsController < ApplicationController
     dataset_params = add_collection_tags(dataset_params)
     @dataset = Dataset.new(dataset_params)
 
+    file_query_fields = process_selector_file
+    setup_selectors(@dataset.input_query_fields)
+    
     # Setup selectors
-    created_terms = gen_new_terms(dataset_params[:input_query_fields])
+#    created_terms = gen_new_terms(dataset_params[:input_query_fields])
+ #   @dataset.save
+  #  associate_terms_with_dataset(@dataset, created_terms)
+  end
+
+  # TODO:
+  # Get update working properly
+  # Test crawling
+  # Add conditional to check what to run and pass to selector setup
+  # Test normal term adding, update, run still work and upload
+
+  # Turn a file of selectors into the same format as input_query_fields
+  def process_selector_file
+    # Get array of hashes
+    selector_file_params = JSON.parse(File.read(params["dataset"]["selector_file"].path))
+    outhash = Hash.new
+
+    # Turn into numbered hash
+    count = 0
+    selector_file_params.each do |s|
+      outhash[count] = s
+      count += 1
+    end
+    
+    @dataset.update_attributes(input_query_fields: outhash)
+
+    return outhash
+  end
+
+  # Generate selectors for dataset
+  def setup_selectors(selector_hash)
+    created_terms = gen_new_terms(selector_hash)
     @dataset.save
     associate_terms_with_dataset(@dataset, created_terms)
   end
@@ -276,6 +310,6 @@ class DatasetsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def dataset_params
     name = params.require(:dataset).permit(:name)
-    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)})
+    return name.merge(params.permit(:source)).merge({input_query_fields: params.permit(:input_query_fields)})
   end
 end

@@ -35,7 +35,7 @@ class DatasetsController < ApplicationController
 
   def update
     @dataset = Dataset.find(params[:id])
-    binding.pry
+    
     # Update the selectors
     find_updated_selectors(dataset_params)
     update_selectors
@@ -54,6 +54,11 @@ class DatasetsController < ApplicationController
         format.json { render json: @dataset.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # New function for things on the upload form
+  def new_upload
+    new
   end
 
   def new
@@ -105,7 +110,7 @@ class DatasetsController < ApplicationController
         @updated_selectors.push({term_query: updated_selector, selector_num: selector.selector_num, id: selector.id})
       end
     end
-
+    
     # Add all additional selectors to new
     max_count = @dataset.terms.count-1
     @new_selectors = dataset_params["input_query_fields"].select{|k,v| k.to_i > max_count}
@@ -116,7 +121,7 @@ class DatasetsController < ApplicationController
     # Add new terms
     created_terms = gen_new_terms(@new_selectors)
     associate_terms_with_dataset(@dataset, created_terms)
-
+    
     # Update existing selectors
     @updated_selectors.each do |selector|
       Term.find(selector[:id]).update_attributes(selector)
@@ -144,20 +149,12 @@ class DatasetsController < ApplicationController
     dataset_params = add_collection_tags(dataset_params)
     @dataset = Dataset.new(dataset_params)
 
-    file_query_fields = process_selector_file
-    setup_selectors(@dataset.input_query_fields)
-    
-    # Setup selectors
-#    created_terms = gen_new_terms(dataset_params[:input_query_fields])
- #   @dataset.save
-  #  associate_terms_with_dataset(@dataset, created_terms)
-  end
+    # Process selector file
+    process_selector_file if params["dataset"]["selector_file"]
 
-  # TODO:
-  # Get update working properly
-  # Test crawling
-  # Add conditional to check what to run and pass to selector setup
-  # Test normal term adding, update, run still work and upload
+    # Setup selectors
+    setup_selectors(@dataset.input_query_fields)
+  end
 
   # Turn a file of selectors into the same format as input_query_fields
   def process_selector_file
@@ -168,7 +165,7 @@ class DatasetsController < ApplicationController
     # Turn into numbered hash
     count = 0
     selector_file_params.each do |s|
-      outhash[count] = s
+      outhash[count.to_s] = s
       count += 1
     end
     
@@ -309,7 +306,8 @@ class DatasetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dataset_params
+    params[:input_query_fields] = {empty: "empty"} if params[:input_query_fields].empty?
     name = params.require(:dataset).permit(:name)
-    return name.merge(params.permit(:source)).merge({input_query_fields: params.permit(:input_query_fields)})
+    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)})
   end
 end

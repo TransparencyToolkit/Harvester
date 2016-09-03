@@ -17,8 +17,8 @@
     <h2>Upload Selector List</h2>
     <p>Upload a JSON list of selectors. The keys should be the names of the
     fields for the data source as specified in CrawlerManager. If you aren't
-    adding selectors from a pre-existing list in bulk, the normal selector
-    input form is a better option.</p>
+    adding selectors from a pre-existing list in bulk, <%= link_to "the normal
+    selector input form", new_dataset_path(source: params[:source]) %> is a better option.</p>
     <ol class="unstyled" id="term-input-list">
       <li>
 	<%= f.label :selector_file %>
@@ -26,6 +26,7 @@
       </li>
     </ol>
     <%= hidden_field_tag 'source', params[:source] %>
+    <%= hidden_field_tag 'input_query_fields' %>
     <button class="button pull-right" type="submit" name="commit"><i class="icon-checkmark"></i> Start Collecting</button>
     <button class="button pull-right" type="submit" name="save"><i class="icon-checkmark"></i> Save Selectors</button>
   </div>

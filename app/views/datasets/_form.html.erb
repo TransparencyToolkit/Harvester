@@ -15,7 +15,9 @@
 
   <div class="app-sidebars-large">
     <h2>Enter Selectors</h2>
-    <p>Single selectors or multiple are allowed and will be crawled as single queries</p>
+    <p>Single selectors or multiple are allowed. To upload a JSON with
+    selectors instead of entering them manually, <%= link_to "use the upload
+    form", datasets_new_upload_path(source: params[:source]) %>.</p>
     <ol class="unstyled" id="term-input-list">
       <li>
         <%= render 'query_fields', count: 0 %>

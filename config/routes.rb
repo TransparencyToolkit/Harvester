@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'new_upload', to: 'datasets#new'
+  get 'datasets/new_upload', to: 'datasets#new'
   resources :datasets
   resources :terms
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,6 @@
 module SaveData
   include DataitemGen
+  include IdGen
   
   # Save all data
   def save_data(results, dataset, term, source, out_file_name)
@@ -10,6 +11,7 @@ module SaveData
       item = eval "ClassGen::#{classname}.create(#{item_values})"
 
       # Set collection time
+      item.update_attributes(matching_id: gen_id(item, source))
       item.update_attributes(collection_time: Time.now)
       
       # Add association with dataset and term

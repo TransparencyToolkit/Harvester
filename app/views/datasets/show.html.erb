@@ -32,8 +32,9 @@
         <% end %>
 
 	<%= link_to raw("<i class='icon-trash'></i> Delete"), query_fields,
-	method: :delete, class: "remove danger pull-right" %>
-        <a href="#" class="view info pull-right"><i class="icon-query"></i> Re-Crawl</a>
+	    method: :delete, class: "remove danger pull-right" %>
+	<%= link_to raw("<i class='icon-query'></i> Re-Crawl"),
+	    terms_recrawl_path({selector: query_fields}), class: "view info pull-right" %>
       </li>
     <% end %>
     </ul>

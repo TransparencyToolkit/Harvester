@@ -2,6 +2,11 @@ require 'pry'
 
 class TermsController < ApplicationController
   include IndexData
+  include TagGen
+  include SaveData
+  include CollectData
+  include UpdateColselec
+  include SaveColselec
   
   def destroy
     @term = Term.find(params[:id])
@@ -17,6 +22,14 @@ class TermsController < ApplicationController
         format.html{redirect_to @dataset, notice: 'Selector was successfully deleted.'}
       end
     end
+  end
+
+  # Recrawls a single item
+  def recrawl
+    @term = Term.find(params[:selector])
+    @dataset = @term.dataset
+    scrape_selector(@term, @dataset.source, @dataset)
+    redirect_to @dataset, notice: 'Selector was successfully rescraped'
   end
 
   private

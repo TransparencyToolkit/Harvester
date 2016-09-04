@@ -16,6 +16,12 @@ module DataitemGen
     return ClassGen.gen_class(name, fields)
   end
 
+  # Get classname of form SourcenameItem
+  def get_item_classname(source)
+    name = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["name"]
+    gen_class_name(name)
+  end
+  
   # Generate a name for the model
   def gen_class_name(name)
     return name.split(" ").map{ |c| c.capitalize}.join+"Item"

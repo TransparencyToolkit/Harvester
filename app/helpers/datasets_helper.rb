@@ -9,4 +9,12 @@ module DatasetsHelper
   def get_count_per_dataset(dataset)
     return dataset.dataitems.length
   end
+
+  # Generate JSON with all data to print on show view
+  def gen_print_data(dataset)
+    result_data = dataset.dataitems.inject([]) do |all_items, item|
+      all_items.push(Dataitem.find(item).as_json)
+    end
+    result_data
+  end
 end

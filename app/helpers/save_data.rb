@@ -9,11 +9,16 @@ module SaveData
       item_values = gen_params_hash(dataitem, source)
       item = eval "ClassGen::#{classname}.create(#{item_values})"
 
+      # Set collection time
+      item.update_attributes(collection_time: Time.now)
+      
       # Add association with dataset and term
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
     end
 
+    # Add collection time to term, index term, and save
+    term.update_attributes(latest_collection_time: Time.now)
     index_elastic(term.dataitems, term, source)
     save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end

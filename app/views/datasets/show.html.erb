@@ -30,6 +30,7 @@
         <% query_fields.term_query.each do |query, value| %>
           <%= value %>
         <% end %>
+	  <%= query_fields.latest_collection_time %>
 
 	<%= link_to raw("<i class='icon-trash'></i> Delete"), query_fields,
 	    method: :delete, class: "remove danger pull-right" %>

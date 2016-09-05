@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="app-title">
+    <h1><span>Collection:</span> <%= @dataset.name %></h1>
+  </div>
+
+  <div class="app-content">
+    <div class="grid-three">
+      <div class="two-column">
+        <h2><% if get_count_per_dataset(@dataset) > 0 %><%= get_count_per_dataset(@dataset) %><% else %>No<% end %> Items Collected</h2>
+      </div>
+      <div class="one-column text-right">
+      <% @crawlers.each do |crawler| %>
+        <% if crawler["classname"] == @dataset.source %>
+        <i class="<%= crawler["icon"] %>"></i> <%= crawler["name"] %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+
+    <p>Check the boxes next to the selectors you want to crawl again:</p>
+    <% if @dataset.input_query_fields %>
+     <%= render 'recrawl_form' %>
+    <% end %>
+    <hr>
+  </div>
+</div>

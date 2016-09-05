@@ -6,7 +6,7 @@
     <a href="/datasets/<%= @dataset.id%>/edit"><i class="icon-modified"></i>
       Edit</a>
     <%= link_to raw("<i class='icon-query'></i> Re-Crawl"),
-      datasets_recrawl_mult_path({collection: @dataset}), class: "view info pull-right button" %>
+      datasets_recrawl_collection_path({collection: @dataset}), class: "view info pull-right button" %>
   </div>
 
   <div class="app-content">
@@ -54,11 +54,13 @@
     <% else %>
     <h3>RAW Data</h3>
     <div class="expander">
-      <a href="javascript:void(0)" class="expander-trigger expander-hidden"> Expand to see data</a>
-      <div class="expander-content">
-        <%= JSON.pretty_generate(@print_data) %>
-      </div>
+            <a href="javascript:void(0)" class="expander-trigger
+               expander-hidden"> Expand to see data</a>
+	    <div class="expander-content">
+	      <%= JSON.pretty_generate(@print_data) %>
+	    </div>
     </div>
     <% end %>
+
   </div>
 </div>

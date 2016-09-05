@@ -27,10 +27,19 @@ class DatasetsController < ApplicationController
   end
 
   # Recrawl mutiple terms in dataset
-  def recrawl_mult
+  def recrawl_collection
     @dataset = Dataset.find(params[:collection])
-    loop_and_run(@dataset.source, @dataset, @dataset.terms)
-    redirect_to @dataset, notice: 'Collection was successfully recrawled'
+  end
+
+  # Recrawl list of items
+  def recrawl_items
+    # Get list of selectors and dataset from params
+    recrawl_list = params["selectors_to_recrawl"].map{|s| Term.find(s)}
+    @dataset = Dataset.find(params["collection"])
+
+    # Recrawl and redirect
+    loop_and_run(@dataset.source, @dataset, recrawl_list)
+    redirect_to @dataset
   end
 
   def sources

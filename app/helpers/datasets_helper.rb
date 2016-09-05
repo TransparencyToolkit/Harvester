@@ -24,4 +24,15 @@ module DatasetsHelper
     end
     result_data
   end
+
+  # Generate a label for the checkbox
+  def gen_checkbox_label(selector)
+    label = ""
+    selector.term_query.each do |query, value|
+      label += value.to_s+" "
+    end
+
+    label += " (Last Collected:"+selector.latest_collection_time.to_s+")"
+    return label
+  end
 end

@@ -1,0 +1,11 @@
+<%= form_tag datasets_recrawl_items_path do |f| %>
+  <%= check_box_tag('check_all') %><br />
+  <% @dataset.terms.each do |selector| %>
+    <%= check_box_tag 'selectors_to_recrawl[]', selector.id, false, class: 'selector_checkbox' %>
+    <%= label_tag gen_checkbox_label(selector) %>
+    <br />
+    <% end %>
+    <%= hidden_field_tag 'collection', @dataset.id %>
+    <%= submit_tag "Re-Crawl" %>
+    
+<% end %>

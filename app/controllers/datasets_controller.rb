@@ -55,7 +55,7 @@ class DatasetsController < ApplicationController
 
     # Collect data and save selectors
     if params.include?("commit")
-      loop_and_run(dataset_params["source"], @dataset, @dataset.terms)
+      loop_and_run(dataset_params["source"], @dataset, @all_modified_selectors)
     end
     
     respond_to do |format|

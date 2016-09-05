@@ -26,5 +26,9 @@ module UpdateColselec
     @updated_selectors.each do |selector|
       Term.find(selector[:id]).update_attributes(selector)
     end
+
+    # Make list of all modified selectors
+    @all_modified_selectors = created_terms
+    @updated_selectors.each {|s| @all_modified_selectors.push(Term.find(s[:id]))}
   end
 end

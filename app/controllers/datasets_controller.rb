@@ -26,6 +26,13 @@ class DatasetsController < ApplicationController
     end
   end
 
+  # Recrawl mutiple terms in dataset
+  def recrawl_mult
+    @dataset = Dataset.find(params[:collection])
+    loop_and_run(@dataset.source, @dataset, @dataset.terms)
+    redirect_to @dataset, notice: 'Collection was successfully recrawled'
+  end
+
   def sources
     @datasets = Dataset.all
     @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
@@ -48,7 +55,7 @@ class DatasetsController < ApplicationController
 
     # Collect data and save selectors
     if params.include?("commit")
-      loop_and_run(dataset_params, @dataset)
+      loop_and_run(dataset_params["source"], @dataset, @dataset.terms)
     end
     
     respond_to do |format|
@@ -96,7 +103,7 @@ class DatasetsController < ApplicationController
   
   # Also collect data
   def collect_data(dataset_params)
-    loop_and_run(dataset_params, @dataset)
+    loop_and_run(dataset_params["source"], @dataset, @dataset.terms)
 
     respond_to do |format|
       if @dataset.save

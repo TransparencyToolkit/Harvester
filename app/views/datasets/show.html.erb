@@ -3,7 +3,10 @@
     <h1><span>Collection:</span> <%= @dataset.name %></h1>
     <%= link_to raw("<i class='icon-trash'></i> Delete"), @dataset,
 		        method: :delete, class: "remove danger pull-right button" %>
-    <a href="/datasets/<%= @dataset.id%>/edit"><i class="icon-modified"></i> Edit</a>
+    <a href="/datasets/<%= @dataset.id%>/edit"><i class="icon-modified"></i>
+      Edit</a>
+    <%= link_to raw("<i class='icon-query'></i> Re-Crawl"),
+      datasets_recrawl_mult_path({collection: @dataset}), class: "view info pull-right button" %>
   </div>
 
   <div class="app-content">

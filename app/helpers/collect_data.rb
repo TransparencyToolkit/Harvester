@@ -2,9 +2,9 @@ module CollectData
   include SaveData
 
   # Loop through all terms and run
-  def loop_and_run(params, dataset)
-    dataset.terms.each do |term|
-      scrape_selector(term, params["source"], dataset)
+  def loop_and_run(source, dataset, selector_list)
+    selector_list.each do |selector|
+      scrape_selector(selector, source, dataset)
     end
   end
 

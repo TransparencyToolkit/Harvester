@@ -29,7 +29,7 @@ class TermsController < ApplicationController
     @term = Term.find(params[:selector])
     @dataset = @term.dataset
     scrape_selector(@term, @dataset.source, @dataset)
-    redirect_to @dataset, notice: 'Selector was successfully rescraped'
+    redirect_to @dataset, notice: 'Selector was successfully recrawled'
   end
 
   private

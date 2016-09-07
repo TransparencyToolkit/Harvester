@@ -1,5 +1,6 @@
 module CollectData
   include SaveData
+  include RecrawlTime
 
   # Loop through all terms and run
   def loop_and_run(source, dataset, selector_list)
@@ -15,6 +16,7 @@ module CollectData
     curl_url = Curl.get(query).body_str
     results = JSON.parse(curl_url)
     save_data(results, dataset, selector, source, val_string(term_query))
+    update_recrawl_time(selector)
   end
 
 

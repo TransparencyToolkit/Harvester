@@ -1,4 +1,6 @@
 module ScheduleRecrawl
+  include CollectData
+  include RecrawlTime
   # Save recrawl_frequency, recrawl_interval, next_recrawl_time
   def save_rescrape_info(collection, selector_list, recrawl_frequency, recrawl_interval)
     # Save frequency and interval for dataset
@@ -18,12 +20,13 @@ module ScheduleRecrawl
     end
   end
 
-  # Calculate the next time data should be rescraped
-  def calculate_next_rescrape(recrawl_frequency, recrawl_interval)
-    if recrawl_frequency == "once"
-      return nil
-    else
-      return Time.now+(eval("1.#{recrawl_interval}")/recrawl_frequency.to_i)
+  # Check which terms need to be recrawled
+  def check_recrawl
+    need_recrawl = Term.all.select{|t| t.next_recrawl_time <= Time.now}
+
+    # Recrawl each term
+    need_recrawl.each do |t|
+      loop_and_run(t.dataset.source, t.dataset, [t])
     end
   end
 end

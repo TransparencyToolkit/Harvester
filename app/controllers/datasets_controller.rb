@@ -6,6 +6,7 @@ class DatasetsController < ApplicationController
   include UpdateColselec
   include SaveColselec
   include DatasetsHelper
+  include ScheduleRecrawl
   def index
     @datasets = Dataset.all
   end
@@ -36,6 +37,9 @@ class DatasetsController < ApplicationController
     # Get list of selectors and dataset from params
     recrawl_list = params["selectors_to_recrawl"].map{|s| Term.find(s)}
     @dataset = Dataset.find(params["collection"])
+
+    # Save info needed to rescrape datast
+    save_rescrape_info(@dataset, recrawl_list, params["recrawl_frequency"], params["recrawl_interval"])
 
     # Recrawl and redirect
     loop_and_run(@dataset.source, @dataset, recrawl_list)

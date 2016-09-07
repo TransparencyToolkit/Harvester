@@ -8,6 +8,8 @@ class Dataset
   field :source
   field :collection_tag
   has_mongoid_attached_file :selector_file
+  field :recrawl_frequency
+  field :recrawl_interval
   
   # Associations
   has_many :terms

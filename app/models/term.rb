@@ -6,6 +6,9 @@ class Term
   field :selector_tag
   field :overall_tag
   field :latest_collection_time
+  field :recrawl_frequency
+  field :recrawl_interval
+  field :next_recrawl_time
   
   # Associations
   belongs_to :dataset

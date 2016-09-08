@@ -1,7 +1,7 @@
 module RecrawlTime
   # Calculate the next time data should be rescraped
   def calculate_next_rescrape(recrawl_frequency, recrawl_interval)
-    if recrawl_frequency == "once"
+    if recrawl_interval == "once" || recrawl_interval == "never"
       return nil
     else
       return Time.now+(eval("1.#{recrawl_interval}")/recrawl_frequency.to_i)

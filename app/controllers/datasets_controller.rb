@@ -95,6 +95,9 @@ class DatasetsController < ApplicationController
   def create
     # Save the dataset
     save_dataset(dataset_params)
+
+    # Save the recrawl info
+    save_rescrape_info(@dataset, @dataset.terms, params["recrawl_frequency"], params["recrawl_interval"])
          
     # Just show selectors saved
     if params.include?("save")

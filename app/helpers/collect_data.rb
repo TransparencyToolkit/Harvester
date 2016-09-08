@@ -5,7 +5,7 @@ module CollectData
   # Loop through all terms and run
   def loop_and_run(source, dataset, selector_list)
     selector_list.each do |selector|
-      scrape_selector(selector, source, dataset)
+      scrape_selector(selector, source, dataset) unless selector.recrawl_frequency == "never"
     end
   end
 
@@ -15,8 +15,8 @@ module CollectData
     query = gen_query_url(term_query, source)
     curl_url = Curl.get(query).body_str
     results = JSON.parse(curl_url)
-    save_data(results, dataset, selector, source, val_string(term_query))
     update_recrawl_time(selector)
+    save_data(results, dataset, selector, source, val_string(term_query))
   end
 
 

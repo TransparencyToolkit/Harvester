@@ -8,7 +8,7 @@ module ScheduleRecrawl
     collection.save
 
     # Get next rescrape time
-    next_recrawl_time = calculate_next_rescrape(recrawl_frequency, recrawl_interval)
+    next_recrawl_time = calculate_next_rescrape(recrawl_frequency, recrawl_interval) 
     
     # Loop through items and set recrawl frequency, interval, and next rescrape time
     selector_list.each do |r|

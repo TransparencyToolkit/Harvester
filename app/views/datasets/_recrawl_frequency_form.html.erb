@@ -1,0 +1,12 @@
+Enter the frequency with which these selectors should be crawled.<br />
+<%= number_field_tag 'recrawl_frequency', '1' %><%= label_tag "times per: "%>
+
+<%= radio_button_tag 'recrawl_interval', 'never' %><%= label_tag "never" %>
+<%= radio_button_tag 'recrawl_interval', 'once', true %><%= label_tag "only now" %>
+<%= radio_button_tag 'recrawl_interval', 'minute' %><%= label_tag "minute" %>
+<%= radio_button_tag 'recrawl_interval', 'hour' %><%= label_tag "hour" %>
+<%= radio_button_tag 'recrawl_interval', 'day' %><%= label_tag "day" %>
+<%= radio_button_tag 'recrawl_interval', 'week' %><%= label_tag "week" %>
+<%= radio_button_tag 'recrawl_interval', 'month' %><%= label_tag "month" %>
+<%= radio_button_tag 'recrawl_interval', 'year' %><%= label_tag "year" %>
+			    

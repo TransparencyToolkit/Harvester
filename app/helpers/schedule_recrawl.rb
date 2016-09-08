@@ -1,3 +1,5 @@
+require 'pry'
+
 module ScheduleRecrawl
   include CollectData
   include RecrawlTime
@@ -17,6 +19,13 @@ module ScheduleRecrawl
                            next_recrawl_time: next_recrawl_time
                           })
       r.save
+    end
+  end
+
+  # Check if the recrawl schedule changed and update it on selector list if so
+  def check_if_schedule_changed(collection, selector_list, recrawl_frequency, recrawl_interval)
+    if (collection.recrawl_frequency != recrawl_frequency) || (collection.recrawl_interval != recrawl_interval)
+      save_rescrape_info(collection, selector_list, recrawl_frequency, recrawl_interval)
     end
   end
 

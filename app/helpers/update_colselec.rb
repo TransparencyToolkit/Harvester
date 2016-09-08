@@ -1,5 +1,6 @@
 module UpdateColselec
   include SaveColselec
+  include ScheduleRecrawl
   def find_updated_selectors(dataset_params)
     @updated_selectors = Array.new
 
@@ -17,10 +18,11 @@ module UpdateColselec
   end
 
   # Update individual selectors
-  def update_selectors
+  def update_selectors(recrawl_frequency, recrawl_interval)
     # Add new terms
     created_terms = gen_new_terms(@new_selectors)
     associate_terms_with_dataset(@dataset, created_terms)
+    save_rescrape_info(@dataset, created_terms, recrawl_frequency, recrawl_interval)
 
     # Update existing selectors
     @updated_selectors.each do |selector|

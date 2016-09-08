@@ -35,4 +35,27 @@ module DatasetsHelper
     label += " (Last Collected:"+selector.latest_collection_time.to_s+")"
     return label
   end
+
+  # Generate default value for recrawl frequency
+  def gen_recrawl_freq_val
+    if @dataset.recrawl_frequency
+      return @dataset.recrawl_frequency
+    else
+      return "1"
+    end
+  end
+
+  # See if the button should be checked for recrawl interval
+  def check_recrawl_interval?(interval)
+    # Check current val
+    if @dataset.recrawl_interval == interval
+      return true
+
+    # Default to once if no val
+    elsif !@dataset.recrawl_interval && interval == 'once'
+      return true
+    else
+      return false
+    end
+  end
 end

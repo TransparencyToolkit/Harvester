@@ -39,10 +39,10 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params["collection"])
 
     # Save info needed to rescrape datast
-    save_rescrape_info(@dataset, recrawl_list, params["recrawl_frequency"], params["recrawl_interval"])
+    check_if_schedule_changed(@dataset, recrawl_list, params["recrawl_frequency"], params["recrawl_interval"])
 
     # Recrawl and redirect
-    loop_and_run(@dataset.source, @dataset, recrawl_list)
+    loop_and_run(@dataset.source, @dataset, recrawl_list) if params["recrawl_interval"] != "never"
     redirect_to @dataset
   end
 
@@ -60,12 +60,15 @@ class DatasetsController < ApplicationController
 
   def update
     @dataset = Dataset.find(params[:id])
-    
+
+    # Update recrawl schedule
+    check_if_schedule_changed(@dataset, @dataset.terms, params["recrawl_frequency"], params["recrawl_interval"])
+
     # Update the selectors
     find_updated_selectors(dataset_params)
-    update_selectors
+    update_selectors(params["recrawl_frequency"], params["recrawl_interval"])
     @dataset.update_attributes(dataset_params)
-
+ 
     # Collect data and save selectors
     if params.include?("commit")
       loop_and_run(dataset_params["source"], @dataset, @all_modified_selectors)

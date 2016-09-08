@@ -4,6 +4,7 @@ module SaveData
   
   # Save all data
   def save_data(results, dataset, term, source, out_file_name)
+    results_to_index = Array.new
     results.each do |dataitem|
       # Create item for appropriate model
       classname = get_item_classname(source)
@@ -17,11 +18,14 @@ module SaveData
       # Add association with dataset and term
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
+
+      # Push to array to index
+      results_to_index.push(item)
     end
 
     # Add collection time to term, index term, and save
     term.update_attributes(latest_collection_time: Time.now)
-    index_elastic(term.dataitems, term, source)
+    index_elastic(results_to_index, term, source)
     save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end
 

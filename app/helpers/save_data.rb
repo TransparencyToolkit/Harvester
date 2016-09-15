@@ -1,6 +1,9 @@
-module SaveData
+class SaveData
   include DataitemGen
   include IdGen
+
+  def initialize
+  end
   
   # Save all data
   def save_data(results, dataset, term, source, out_file_name)
@@ -9,6 +12,7 @@ module SaveData
       # Create item for appropriate model
       classname = get_item_classname(source)
       item_values = gen_params_hash(dataitem, source)
+      create_all_models
       item = eval "ClassGen::#{classname}.create(#{item_values})"
 
       # Set collection time
@@ -25,10 +29,12 @@ module SaveData
 
     # Add collection time to term, index term, and save
     term.update_attributes(latest_collection_time: Time.now)
-    index_elastic(results_to_index, term, source)
+    i = IndexData.new
+    i.index_elastic(results_to_index, term, source)
     save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end
-
+  handle_asynchronously :save_data, :run_at => Time.now
+                                              
   # Generate parameters hash
   def gen_params_hash(dataitem, source)
     item_hash = Hash.new

@@ -6,7 +6,7 @@ load 'app/index/index_data.rb'
 
 include ScheduleRecrawl
 include DataitemGen
-include IndexData
+
 create_all_models
 s = Rufus::Scheduler.singleton
 

@@ -1,4 +1,6 @@
-module IndexData
+class IndexData
+  def initialize
+  end
 
   # Remove iterms from elasticsearch
   def remove_item_elastic(data)

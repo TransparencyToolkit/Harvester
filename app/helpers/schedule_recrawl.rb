@@ -31,7 +31,7 @@ module ScheduleRecrawl
 
   # Check which terms need to be recrawled
   def check_recrawl
-    need_recrawl = Term.all.select{|t| t.next_recrawl_time <= Time.now}
+    need_recrawl = Term.all.select{|t| Time.now >= t.next_recrawl_time if t.next_recrawl_time}
 
     # Recrawl each term
     need_recrawl.each do |t|

@@ -1,7 +1,5 @@
 class DatasetsController < ApplicationController
-  include IndexData
   include TagGen
-  include SaveData
   include CollectData
   include UpdateColselec
   include SaveColselec
@@ -15,10 +13,9 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    remove_item_elastic(@dataset.dataitems)
-    @dataset.terms.each{|d| d.delete}
-    @dataset.dataitems.each{|z| z.delete}
-    
+    d = DeleteData.new
+    d.delay.delete_collection(@dataset.dataitems, @dataset.terms)
+
     # Destroy and show notification
     respond_to do |format|
       if @dataset.destroy
@@ -126,8 +123,8 @@ class DatasetsController < ApplicationController
 
     respond_to do |format|
       if @dataset.save
-        format.html { redirect_to action: "index", notice: 'Dataset was successfully collected.' }
-        format.json { render action: "index", status: :created, location: @dataset }
+        format.html { redirect_to @dataset, notice: 'Dataset was successfully collected.' }
+        format.json { render @dataset, status: :created, location: @dataset }
       else
         format.html { render :new }
         format.json { render json: @dataset.errors, status: :unprocessable_entity }
@@ -139,8 +136,8 @@ class DatasetsController < ApplicationController
   def save_success
     respond_to do |format|
       if @dataset.save
-        format.html { redirect_to action: "index", notice: 'Dataset was successfully saved.' }
-        format.json { render action: "index", status: :created, location: @dataset }
+        format.html { redirect_to @dataset, notice: 'Dataset was successfully saved.' }
+        format.json { render @dataset, status: :created, location: @dataset }
       else
         format.html { render :new }
         format.json { render json: @dataset.errors, status: :unprocessable_entity }

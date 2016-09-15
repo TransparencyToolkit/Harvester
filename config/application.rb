@@ -23,7 +23,7 @@ module DocumentLoader
     config.generators do |g|
       g.orm             :neo4j
    end
-
+    config.active_job.queue_adapter = :delayed_job
     # Configure where the embedded neo4j database should exist
     # Notice embedded db is only available for JRuby
     # config.neo4j.session_type = :embedded_db  # default #server_db

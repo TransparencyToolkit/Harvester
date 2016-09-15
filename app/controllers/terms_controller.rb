@@ -1,7 +1,6 @@
 require 'pry'
 
 class TermsController < ApplicationController
-  include IndexData
   include TagGen
   include SaveData
   include CollectData
@@ -14,8 +13,9 @@ class TermsController < ApplicationController
     remove_renum_dataset
 
     # Destroy associated data items
-    remove_item_elastic(@term.dataitems)
-    @term.dataitems.each{|d| d.delete}
+    i = IndexData.new
+    i.delay.remove_item_elastic(@term.dataitems)
+    @term.dataitems.delay.each{|d| d.delete}
 
     respond_to do |format|
       if @term.destroy

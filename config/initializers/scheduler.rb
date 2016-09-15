@@ -3,6 +3,7 @@ require 'pry'
 load 'app/helpers/schedule_recrawl.rb'
 load 'app/helpers/dataitem_gen.rb'
 load 'app/index/index_data.rb'
+load 'app/helpers/delete_data.rb'
 
 include ScheduleRecrawl
 include DataitemGen

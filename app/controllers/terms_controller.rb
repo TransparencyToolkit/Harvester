@@ -3,6 +3,7 @@ require 'pry'
 class TermsController < ApplicationController
   include TagGen
   include SaveData
+  include IndexData
   include CollectData
   include UpdateColselec
   include SaveColselec
@@ -13,8 +14,7 @@ class TermsController < ApplicationController
     remove_renum_dataset
 
     # Destroy associated data items
-    i = IndexData.new
-    i.delay.remove_item_elastic(@term.dataitems)
+    remove_item_elastic(@term.dataitems)
     @term.dataitems.delay.each{|d| d.delete}
 
     respond_to do |format|

@@ -1,15 +1,10 @@
-class DeleteData
-  def initialize
-  end
-
+module DeleteData
   # Delete from Harvester and ES
   def delete_collection(items, terms)
-#    binding.pry
     delete_elastic(items)
     delete_terms(terms)
     delete_items(items)
   end
-  handle_asynchronously :delete_collection, :run_at => Time.now
 
   # Remove items from elasticsearch
   def delete_elastic(items)

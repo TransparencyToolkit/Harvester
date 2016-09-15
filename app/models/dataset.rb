@@ -1,6 +1,7 @@
 class Dataset
   include Mongoid::Document
   include Mongoid::Paperclip
+  include GlobalID::Identification
   
   # Fields
   field :name

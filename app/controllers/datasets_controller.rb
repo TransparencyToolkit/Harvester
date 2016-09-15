@@ -1,6 +1,9 @@
 class DatasetsController < ApplicationController
   include TagGen
   include CollectData
+  include SaveData
+  include IndexData
+  include DeleteData
   include UpdateColselec
   include SaveColselec
   include DatasetsHelper
@@ -13,8 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    d = DeleteData.new
-    d.delete_collection(@dataset.dataitems, @dataset.terms)
+    delete_collection(@dataset.dataitems, @dataset.terms)
 
     # Destroy and show notification
     respond_to do |format|

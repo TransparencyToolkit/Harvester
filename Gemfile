@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pry'
 gem 'jquery-rails'
 gem 'rufus-scheduler'
-gem 'delayed_job_mongoid'
+gem 'resque'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,4 +1,6 @@
 module SaveColselec
+  include SaveData
+  
   # Just save dataset
   def save_dataset(dataset_params)
     # Setup dataset
@@ -53,8 +55,7 @@ module SaveColselec
   # Add associations for a list of terms
   def associate_terms_with_dataset(dataset, term_list)
     term_list.each do |term|
-      a = SaveData.new
-      a.add_association(dataset.terms, term)
+      add_association(dataset.terms, term)
     end
   end
 end

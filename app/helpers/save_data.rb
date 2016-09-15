@@ -1,12 +1,19 @@
-class SaveData
+module SaveData
   include DataitemGen
   include IdGen
+  include IndexData
 
-  def initialize
+  @queue = :save
+
+  def self.perform(results, dataset, term, source, out_file_name)
+    save_data(results, dataset, term, source, out_file_name)
   end
-  
+
   # Save all data
   def save_data(results, dataset, term, source, out_file_name)
+    term = Term.find(term["_id"])
+    dataset = Dataset.find(dataset["_id"])
+    
     results_to_index = Array.new
     results.each do |dataitem|
       # Create item for appropriate model
@@ -18,7 +25,7 @@ class SaveData
       # Set collection time
       item.update_attributes(matching_id: gen_id(item, source))
       item.update_attributes(collection_time: Time.now)
-      
+
       # Add association with dataset and term
       add_association(dataset.dataitems, item)
       add_association(term.dataitems, item)
@@ -29,11 +36,9 @@ class SaveData
 
     # Add collection time to term, index term, and save
     term.update_attributes(latest_collection_time: Time.now)
-    i = IndexData.new
-    i.index_elastic(results_to_index, term, source)
+    index_elastic(results_to_index, term, source)
     save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end
-  handle_asynchronously :save_data, :run_at => Time.now
                                               
   # Generate parameters hash
   def gen_params_hash(dataitem, source)

@@ -66,7 +66,7 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 **Start Harvester**
 
 1. Make sure mongodb is running on your system with mongod --dbpath /path/to/data
-2. Run RAILS_ENV=development bin/delayed_job restart
+2. Run QUEUE=* rake environment resque:work. To monitor resque with the web interface, also run resque-web
 3. Then run Harvester with `rails server -p 3333`
 4. Go to [0.0.0.0:3000](http://0.0.0.0:3333) in a browser
 

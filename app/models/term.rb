@@ -1,5 +1,6 @@
 class Term
   include Mongoid::Document
+  include GlobalID::Identification
   field :term_query, type: Hash
   field :selector_num
   field :collection_tag

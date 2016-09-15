@@ -1,13 +1,14 @@
 module CollectData
   include RecrawlTime
-
+  include SaveData
+  
   # Loop through all terms and run
   def loop_and_run(source, dataset, selector_list)
     selector_list.each do |selector|
       scrape_selector(selector, source, dataset) unless selector.recrawl_frequency == "never"
     end
   end
-
+  
   # Scrape the selector
   def scrape_selector(selector, source, dataset)
     term_query = selector[:term_query]
@@ -17,8 +18,7 @@ module CollectData
     update_recrawl_time(selector)
 
     # Save data
-    a = SaveData.new
-    a.save_data(results, dataset, selector, source, a.val_string(term_query))
+    Resque.enqueue(SaveData, results, dataset, selector, source, val_string(term_query))
   end
 
 

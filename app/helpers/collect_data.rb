@@ -1,6 +1,14 @@
 module CollectData
   include RecrawlTime
   include SaveData
+
+  @queue = :collect
+
+  def self.perform(source, dataset, selector_list)
+    dataset = Dataset.find(dataset["_id"])
+    selector_list = selector_list.map{|s| Term.find(s["_id"])}
+    loop_and_run(source, dataset, selector_list)
+  end
   
   # Loop through all terms and run
   def loop_and_run(source, dataset, selector_list)

@@ -1,9 +1,8 @@
 module IndexData
   # Remove iterms from elasticsearch
-  def remove_item_elastic(data)
+  def remove_item_elastic(data, source)
     if !data.empty? # Ony delete if something to delete
       # Get info needed
-      source = data.first.dataset.source
       gen_dataspec(source)
       extract_arr = JSON.pretty_generate(gen_extract_arr(data, source))
 

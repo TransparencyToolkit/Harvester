@@ -3,7 +3,7 @@ class DatasetsController < ApplicationController
   include CollectData
   include SaveData
   include IndexData
-  include DeleteData
+  include DeleteSelectors
   include UpdateColselec
   include SaveColselec
   include DatasetsHelper
@@ -16,7 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    delete_collection(@dataset.dataitems, @dataset.terms)
+    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source)
 
     # Destroy and show notification
     respond_to do |format|
@@ -121,7 +121,7 @@ class DatasetsController < ApplicationController
   
   # Also collect data
   def collect_data(dataset_params)
-    loop_and_run(dataset_params["source"], @dataset, @dataset.terms)
+    Resque.enqueue(CollectData, dataset_params["source"], @dataset, @dataset.terms)
 
     respond_to do |format|
       if @dataset.save

@@ -14,7 +14,7 @@ class DatasetsController < ApplicationController
 
     # Delete associated terms and items
     d = DeleteData.new
-    d.delay.delete_collection(@dataset.dataitems, @dataset.terms)
+    d.delete_collection(@dataset.dataitems, @dataset.terms)
 
     # Destroy and show notification
     respond_to do |format|

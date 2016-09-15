@@ -9,7 +9,7 @@ class DeleteData
     delete_terms(terms)
     delete_items(items)
   end
- # handle_asynchronously :delete_collection, :run_at => Time.now
+  handle_asynchronously :delete_collection, :run_at => Time.now
 
   # Remove items from elasticsearch
   def delete_elastic(items)

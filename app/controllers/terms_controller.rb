@@ -7,6 +7,7 @@ class TermsController < ApplicationController
   include CollectData
   include UpdateColselec
   include SaveColselec
+  include DeleteSelectors
   
   def destroy
     @term = Term.find(params[:id])
@@ -14,8 +15,7 @@ class TermsController < ApplicationController
     remove_renum_dataset
 
     # Destroy associated data items
-    remove_item_elastic(@term.dataitems)
-    @term.dataitems.delay.each{|d| d.delete}
+    Resque.enqueue(DeleteSelectors, @term.dataitems, nil, @dataset.source, @term)
 
     respond_to do |format|
       if @term.destroy
@@ -28,7 +28,7 @@ class TermsController < ApplicationController
   def recrawl
     @term = Term.find(params[:selector])
     @dataset = @term.dataset
-    scrape_selector(@term, @dataset.source, @dataset)
+    Resque.enqueue(CollectData, @dataset.source, @dataset, [@term])
     redirect_to @dataset, notice: 'Selector was successfully recrawled'
   end
 

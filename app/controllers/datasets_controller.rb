@@ -16,7 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source)
+    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source, nil)
 
     # Destroy and show notification
     respond_to do |format|
@@ -41,7 +41,7 @@ class DatasetsController < ApplicationController
     check_if_schedule_changed(@dataset, recrawl_list, params["recrawl_frequency"], params["recrawl_interval"])
 
     # Recrawl and redirect
-    loop_and_run(@dataset.source, @dataset, recrawl_list) if params["recrawl_interval"] != "never"
+    Resque.enqueue(CollectData, @dataset.source, @dataset, recrawl_list) if params["recrawl_interval"] != "never"
     redirect_to @dataset
   end
 
@@ -70,7 +70,7 @@ class DatasetsController < ApplicationController
  
     # Collect data and save selectors
     if params.include?("commit")
-      loop_and_run(dataset_params["source"], @dataset, @all_modified_selectors)
+      Resque.enqueue(CollectData, dataset_params["source"], @dataset, @all_modified_selectors)
     end
     
     respond_to do |format|

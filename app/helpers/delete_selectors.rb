@@ -3,22 +3,22 @@ module DeleteSelectors
   
   @queue = :delete
 
-  def self.perform(items, terms, source)
-    terms = terms.map{|s| Term.find(s["_id"])}
+  def self.perform(items, terms, source, selector)
+    terms = terms.map{|s| Term.find(s["_id"])} if terms
     items = items.map{|s| Dataitem.find(s["_id"])}
-    delete_collection(items, terms, source)
+    delete_collection(items, terms, source, selector)
   end
   
   # Delete from Harvester and ES
-  def self.delete_collection(items, terms, source)
-    delete_elastic(items, source)
-    delete_terms(terms)
+  def self.delete_collection(items, terms, source, selector)
+    delete_elastic(items, source, selector)
+    delete_terms(terms) if terms
     delete_items(items)
   end
 
   # Remove items from elasticsearch
-  def self.delete_elastic(items, source)
-    remove_item_elastic(items, source)
+  def self.delete_elastic(items, source, selector)
+    remove_item_elastic(items, source, selector)
   end
 
   # Delete the terms

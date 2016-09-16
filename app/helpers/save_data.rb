@@ -36,7 +36,7 @@ module SaveData
 
     # Add collection time to term, index term, and save
     term.update_attributes(latest_collection_time: Time.now)
-    index_elastic(results_to_index, term, source)
+    index_elastic(results_to_index, term, source, nil)
     save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end
                                               

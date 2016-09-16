@@ -35,7 +35,7 @@ module ScheduleRecrawl
 
     # Recrawl each term
     need_recrawl.each do |t|
-      loop_and_run(t.dataset.source, t.dataset, [t])
+      Resque.enqueue(CollectData, t.dataset.source, t.dataset, [t])
     end
   end
 end

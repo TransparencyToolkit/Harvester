@@ -19,31 +19,32 @@ module CollectData
   
   # Scrape the selector
   def scrape_selector(selector, source, dataset)
+    # Get term info
     term_query = selector[:term_query]
-    query = gen_query_url(term_query, source)
-    curl_url = Curl.get(query).body_str
-    results = JSON.parse(curl_url)
-    update_recrawl_time(selector)
+    query = gen_query_url(term_query, source, selector.overall_tag)
 
-    # Save data
-    Resque.enqueue(SaveData, results, dataset, selector, source, val_string(term_query))
+    # Send query and update time
+    Curl.get(query)
+    update_recrawl_time(selector)
   end
 
 
   # Generate URL with params and crawler info
-  def gen_query_url(query, source)
+  def gen_query_url(query, source, selector_tag)
     @input_params = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["input_params"]
 
     # Gen url base
     url = "http://0.0.0.0:9506/crawlers?"
     url += "crawler="+source
+    url += "&selector-tag="+Base64.encode64(selector_tag).strip
+    url += "&harvester-path="+Base64.encode64("127.0.0.1:"+Rails::Server.new.options[:Port].to_s).strip
 
     # Add all params for dataset
     @input_params.each do |param, type|
       par = query[param] ? Base64.encode64(query[param]).strip : ""
       url += "&"+param+"="+par
     end
-
+    
     return url
   end
 end

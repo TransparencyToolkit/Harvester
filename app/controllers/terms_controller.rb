@@ -28,7 +28,7 @@ class TermsController < ApplicationController
   def recrawl
     @term = Term.find(params[:selector])
     @dataset = @term.dataset
-    Resque.enqueue(CollectData, @dataset.source, @dataset, [@term])
+    CollectData.perform(@dataset.source, @dataset, [@term])
     redirect_to @dataset, notice: 'Selector was successfully recrawled'
   end
 

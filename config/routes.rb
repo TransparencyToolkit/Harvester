@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   get 'terms/recrawl', to: 'terms#recrawl'
   get 'datasets/recrawl_collection', to: 'datasets#recrawl_collection'
   post 'datasets/recrawl_items', to: 'datasets#recrawl_items'
+  post 'relay_results', to: 'dataitems#save_results'
+  
   resources :datasets
   resources :terms
+  resources :dataitems
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -41,7 +41,7 @@ class DatasetsController < ApplicationController
     check_if_schedule_changed(@dataset, recrawl_list, params["recrawl_frequency"], params["recrawl_interval"])
 
     # Recrawl and redirect
-    Resque.enqueue(CollectData, @dataset.source, @dataset, recrawl_list) if params["recrawl_interval"] != "never"
+    CollectData.perform(@dataset.source, @dataset, recrawl_list) if params["recrawl_interval"] != "never"
     redirect_to @dataset
   end
 
@@ -70,7 +70,7 @@ class DatasetsController < ApplicationController
  
     # Collect data and save selectors
     if params.include?("commit")
-      Resque.enqueue(CollectData, dataset_params["source"], @dataset, @all_modified_selectors)
+      CollectData.perform(dataset_params["source"], @dataset, @all_modified_selectors)
     end
     
     respond_to do |format|
@@ -121,17 +121,8 @@ class DatasetsController < ApplicationController
   
   # Also collect data
   def collect_data(dataset_params)
-    Resque.enqueue(CollectData, dataset_params["source"], @dataset, @dataset.terms)
-
-    respond_to do |format|
-      if @dataset.save
-        format.html { redirect_to @dataset, notice: 'Dataset was successfully collected.' }
-        format.json { render @dataset, status: :created, location: @dataset }
-      else
-        format.html { render :new }
-        format.json { render json: @dataset.errors, status: :unprocessable_entity }
-      end
-    end
+    CollectData.perform(dataset_params["source"], @dataset, @dataset.terms)
+    save_success
   end
 
   # Show it successfully saved

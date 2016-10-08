@@ -18,7 +18,8 @@ module IdGen
   # Remove part of ID if needed
   def removeIDPart(id_initial)
     if @get_id_after != nil && !@get_id_after.empty?
-      id_initial = id_initial.split(@get_id_after)[1]
+      split_id = id_initial.split(@get_id_after)
+      id_initial = split_id.length > 1 ? split_id[1] : split_id[0]
     end
 
     return id_initial

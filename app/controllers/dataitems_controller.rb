@@ -10,12 +10,13 @@ class DataitemsController < ApplicationController
   # Save the result info
   def save_results
     # Extract result info from params
-    selector_id = params["selector_id"]
+    selector_id = params["selector_id"].split("_", 2).last
+    source = params["selector_id"].split("_", 2).first
     status_message = params["status_message"]
     results = JSON.parse(params["results"])
 
     # Get corresponding selector
-    matching_selector = Term.find_by({overall_tag: selector_id})
+    matching_selector = Term.where(overall_tag: selector_id).entries.select{|s| s.dataset.source == source}.first
     collection = matching_selector.dataset
 
     # Save data (in background)

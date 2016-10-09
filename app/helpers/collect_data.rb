@@ -36,7 +36,7 @@ module CollectData
     # Gen url base
     url = "http://0.0.0.0:9506/crawlers?"
     url += "crawler="+source
-    url += "&selector-tag="+Base64.encode64(selector_tag).strip.gsub(/\n/, '')
+    url += "&selector-tag="+Base64.encode64(source+"_"+selector_tag).strip.gsub(/\n/, '')
     url += "&harvester-path="+Base64.encode64("127.0.0.1:"+Rails::Server.new.options[:Port].to_s).strip
 
     # Add all params for dataset

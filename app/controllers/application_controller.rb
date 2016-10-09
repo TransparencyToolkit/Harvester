@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
   # Load in all data sources
   def load_sources
     create_all_models
+    c = Curl.get("http://localhost:3000/create_all_indexes")
   end
 end

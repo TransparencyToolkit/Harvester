@@ -34,11 +34,12 @@ module IdGen
 
   # Append secondary ID fields
   def appendSecondary(clean_id, item)
-    @secondary_id_field.each do |f|
-      secondary_field = item[f]
-      clean_id += cleanID(secondary_field.to_s) if secondary_field != nil
+    if @secondary_id_field
+      @secondary_id_field.each do |f|
+        secondary_field = item[f]
+        clean_id += cleanID(secondary_field.to_s) if secondary_field != nil
+      end
     end
-
     return clean_id
   end
 end

@@ -1,0 +1,17 @@
+<style media="screen" type="text/css">
+
+  .progressbox {
+  border: 1px solid black;
+  height: 200px;
+  padding: 10px 10px 10px 10px;
+  overflow: scroll;
+  }
+
+</style>
+
+
+<div class="progressbox" id=<%="pbox_"+@dataset.id.to_s%>>
+  <%= raw(show_message(@dataset.pbox_messages)) %>
+</div>
+
+<br />

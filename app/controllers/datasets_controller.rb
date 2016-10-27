@@ -147,6 +147,6 @@ class DatasetsController < ApplicationController
   def dataset_params
     params[:input_query_fields] = {empty: "empty"} if params[:input_query_fields].empty?
     name = params.require(:dataset).permit(:name)
-    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)})
+    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)}).merge(params.permit(:pbox_messages))
   end
 end

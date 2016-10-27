@@ -11,6 +11,7 @@ class Dataset
   has_mongoid_attached_file :selector_file
   field :recrawl_frequency
   field :recrawl_interval
+  field :pbox_messages
   
   # Associations
   has_many :terms

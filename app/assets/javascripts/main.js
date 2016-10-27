@@ -39,6 +39,7 @@ $(document).ready(function() {
     })
   }
 
+
   /*
   _.each($('#term-input-list li'), function(li, key) {
     var input_id = $(li).find('input[type="text"]').attr('id')

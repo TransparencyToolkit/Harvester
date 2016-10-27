@@ -19,13 +19,12 @@ class DataitemsController < ApplicationController
     # Get corresponding selector
     matching_selector = Term.where(overall_tag: selector_id).entries.select{|s| s.dataset.source == source}.first
     collection = matching_selector.dataset
-
+    
     # Update progress box
     append_message(collection, status_message)
 
     # Save data (in background)
-    # Resque.enqueue(SaveData, results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
-    SaveData.perform(results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
+    Resque.enqueue(SaveData, results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
   end
 
   private

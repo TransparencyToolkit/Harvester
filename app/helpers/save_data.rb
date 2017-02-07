@@ -32,12 +32,12 @@ module SaveData
 
       # Push to array to index
       results_to_index.push(item)
+      save_data_files(dataset.name, source, JSON.pretty_generate([dataitem]), out_file_name+"_"+gen_id(item, source))
     end
 
     # Add collection time to term, index term, and save
     term.update_attributes(latest_collection_time: Time.now)
     index_elastic(results_to_index, term, source, nil)
-    save_data_files(dataset.name, source, JSON.pretty_generate(results), out_file_name)
   end
                                               
   # Generate parameters hash
@@ -59,7 +59,7 @@ module SaveData
   # Save folders of data files
   def save_data_files(dataset_name, source, print_data, out_file_name)
     # Create results directory with name based on dataset
-    results_dir = ENV['HOME']+"/Data/KG/"+dataset_name.gsub(" ", "_").gsub("/", "-")+"_"+source+"/"
+    results_dir = ENV['HOME']+"/Data/AC/"+dataset_name.gsub(" ", "_").gsub("/", "-")+"_"+source+"/"
     unless File.directory?(results_dir)
       Dir.mkdir(results_dir)
     end

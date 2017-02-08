@@ -114,7 +114,6 @@ class DatasetsController < ApplicationController
   # Put all items for dataset in JSON
   def show
     set_dataset
-    @print_data = gen_print_data(@dataset)
   end
 
   private

@@ -54,19 +54,5 @@
     <% end %>
     <hr>
 
-    <% if @print_data.empty? %>
-    <h3>Shucks</h3>
-    <p>No raw data found in this collection</p>
-    <% else %>
-    <h3>RAW Data</h3>
-    <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger
-               expander-hidden"> Expand to see data</a>
-	    <div class="expander-content">
-	      <%= JSON.pretty_generate(@print_data) %>
-	    </div>
-    </div>
-    <% end %>
-
   </div>
 </div>

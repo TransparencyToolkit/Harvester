@@ -14,11 +14,12 @@ Make sure you have the proper system dependencies with
 - Intall Ruby on Rails
 - On Debian, install depedencies:
   - `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev mongodb`
+- Install Redis [instructions for
+  Debian](https://www.linode.com/docs/databases/redis/deploy-redis-on-ubuntu-or-debian#debian)
 - Get the Harvester code `git clone https://github.com/TransparencyToolkit/Harvester`
 - Install Ruby dependencies from `cd Harvester` and then `bundle install`
 - Download and install [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager)
 - Download & install [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) and it's depedencies
-
 
 ### Install Tika & Tesseract (optional)
 
@@ -50,9 +51,9 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 
 ---
 
-
 ## Running Everything
 
+Currently, there are a lot of dameon
 
 **Start CrawlerManager**
 
@@ -63,17 +64,23 @@ apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 1. Start `Tika` with `java -jar tika-server/target/tika-server-*.jar` 
 2. If you need Tika to have custom URL or port  `--host=localhost --port=1234`
 
-**Start Harvester**
+**Start MongoDB & Rescue**
 
-1. Make sure mongodb is running on your system with mongod --dbpath /path/to/data
-2. Run QUEUE=* rake environment resque:work. To monitor resque with the web interface, also run resque-web
-3. Then run Harvester with `rails server -p 3333`
-4. Go to [0.0.0.0:3000](http://0.0.0.0:3333) in a browser
+1. Create directory where to save `/your/harvested/data`
+2. Start `mongodb` with `mongod --dbpath /your/harvested/data`
+3. Run `QUEUE=* rake environment resque:work` To monitor resque with the web interface, also run resque-web
 
 **Start LookingGlass**
 
 1. Start `elasticsearch` as it was installed on your server
 2. Start `LookingGlass` from that directory `rails server`
+
+**Start Harvester**
+
+1. Run Harvester with `rails server -p 3333`
+2. View [0.0.0.0:3000](http://0.0.0.0:3333) in a browser
+
+---
 
 **Add CAPTCHA Solving**
 

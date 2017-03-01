@@ -20,8 +20,8 @@ module SaveData
       classname = get_item_classname(source)
       item_values = gen_params_hash(dataitem, source)
       create_all_models
-      item = eval "ClassGen::#{classname}.create(#{item_values})"
-
+      item = Module.const_get("ClassGen::#{classname}").create(item_values)
+      
       # Set collection time
       item.update_attributes(matching_id: gen_id(item, source))
       item.update_attributes(collection_time: Time.now)

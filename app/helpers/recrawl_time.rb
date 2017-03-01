@@ -4,7 +4,7 @@ module RecrawlTime
     if recrawl_interval == "once" || recrawl_interval == "never"
       return nil
     else
-      return Time.now+(eval("1.#{recrawl_interval}")/recrawl_frequency.to_i)
+      return Time.now+(1.send(recrawl_interval)/recrawl_frequency.to_i)
     end
   end
 

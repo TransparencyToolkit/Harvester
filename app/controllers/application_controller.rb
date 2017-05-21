@@ -1,16 +1,7 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-#  protect_from_forgery with: :exception
-  include DataitemGen
-
-  before_action :load_sources
-
+  before_action :load_crawlers
   private
-
-  # Load in all data sources
-  def load_sources
-    create_all_models
-    c = Curl.get("http://localhost:3000/create_all_indexes")
+  def load_crawlers
+    @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
   end
 end

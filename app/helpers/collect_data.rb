@@ -22,7 +22,7 @@ module CollectData
     # Get term info
     term_query = selector[:term_query]
     query = gen_query_url(term_query, source, selector.overall_tag)
-
+    
     # Send query and update time
     Curl.get(query)
     update_recrawl_time(selector)
@@ -37,7 +37,7 @@ module CollectData
     url = "http://0.0.0.0:9506/crawlers?"
     url += "crawler="+source
     url += "&selector-tag="+Base64.encode64(source+"_"+selector_tag).strip.gsub(/\n/, '')
-    url += "&harvester-path="+Base64.encode64("127.0.0.1:"+Rails::Server.new.options[:Port].to_s).strip
+    url += "&harvester-path="+Base64.encode64("localhost:"+Rails::Server.new.options[:Port].to_s).strip
 
     # Add all params for dataset
     @input_params.each do |param, type|

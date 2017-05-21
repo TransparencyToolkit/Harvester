@@ -13,5 +13,4 @@ class Term
   
   # Associations
   belongs_to :dataset
-  has_many :dataitems
 end

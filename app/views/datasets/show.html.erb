@@ -19,6 +19,7 @@
 	"+@dataset.recrawl_interval %></h4>
       </div>
       <div class="one-column text-right">
+	
       <% @crawlers.each do |crawler| %>
         <% if crawler["classname"] == @dataset.source %>
         <i class="<%= crawler["icon"] %>"></i> <%= crawler["name"] %>

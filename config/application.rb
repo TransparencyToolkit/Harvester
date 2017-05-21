@@ -4,7 +4,7 @@ require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
-# require "active_record/railtie"
+#require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
@@ -20,9 +20,6 @@ Bundler.require(*Rails.groups)
 module DocumentLoader
   class Application < Rails::Application
 
-    config.generators do |g|
-      g.orm             :neo4j
-   end
     config.active_job.queue_adapter = :resque
     # Configure where the embedded neo4j database should exist
     # Notice embedded db is only available for JRuby

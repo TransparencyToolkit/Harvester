@@ -5,6 +5,7 @@ module SaveColselec
   def save_dataset(dataset_params)
     # Setup dataset
     dataset_params = add_collection_tags(dataset_params)
+    dataset_params["input_query_fields"] = dataset_params["input_query_fields"].to_hash
     @dataset = Dataset.new(dataset_params)
 
     # Process selector file

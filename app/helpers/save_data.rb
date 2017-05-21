@@ -22,7 +22,7 @@ module SaveData
 
       # Push to array to index
       results_to_index.push(item_values)
-#      save_data_files(dataset.name, source, JSON.pretty_generate([dataitem]), out_file_name+"_"+gen_id(item, source))
+      save_data_files(dataset.name, source, JSON.pretty_generate([dataitem]), out_file_name)
     end
     
     # Add collection time to term, index term, and save
@@ -48,14 +48,16 @@ module SaveData
   
   # Save folders of data files
   def save_data_files(dataset_name, source, print_data, out_file_name)
+    # Create the overall directory
+    base_path = "#{Dir.pwd}/../#{ENV['PROJECT_INDEX']}/"
+    Dir.mkdir(base_path) unless File.directory?(base_path)
+    
     # Create results directory with name based on dataset
-    results_dir = ENV['HOME']+"/Data/AC/"+dataset_name.gsub(" ", "_").gsub("/", "-")+"_"+source+"/"
-    unless File.directory?(results_dir)
-      Dir.mkdir(results_dir)
-    end
+    results_dir = base_path+dataset_name.gsub(" ", "_").gsub("/", "-")+"_"+source+"/"
+    Dir.mkdir(results_dir) unless File.directory?(results_dir)
 
     # Set output filename based on output and timestamp
-    filename = results_dir+out_file_name+Time.now.to_s.split(" ")[0].gsub("-", "")+".json"
+    filename = results_dir+out_file_name+Time.now.to_s.gsub(":", "").gsub(" ", "_")+rand(5000).to_s+".json"
     File.write(filename, print_data)
   end
 
@@ -63,7 +65,7 @@ module SaveData
   def val_string(value)
     value_str = ""
     value.each do |k, v|
-      value_str += v.gsub(" ", "_").gsub("/", "-").gsub(":", "")+"_"
+      value_str += v.gsub(" ", "_").gsub("/", "_").gsub(":", "")+"_"
     end
     return value_str
   end

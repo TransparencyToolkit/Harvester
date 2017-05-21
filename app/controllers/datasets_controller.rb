@@ -17,7 +17,7 @@ class DatasetsController < ApplicationController
 
     # Delete associated terms and items
     #    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source, nil)
-    DeleteSelectors.perform(@dataset.dataitems, @dataset.terms, @dataset.source, nil)
+    DeleteSelectors.perform(@dataset.terms)
 
     # Destroy and show notification
     respond_to do |format|

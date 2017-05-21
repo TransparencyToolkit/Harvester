@@ -16,7 +16,7 @@ class TermsController < ApplicationController
 
     # Destroy associated data items
 #    Resque.enqueue(DeleteSelectors, @term.dataitems, nil, @dataset.source, @term)
-    DeleteSelectors.perform(@term.dataitems, nil, @dataset.source, @term)
+    DeleteSelectors.perform([@term])
     
     respond_to do |format|
       if @term.destroy

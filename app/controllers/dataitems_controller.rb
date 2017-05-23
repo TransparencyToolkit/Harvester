@@ -24,8 +24,7 @@ class DataitemsController < ApplicationController
     append_message(collection, status_message)
 
     # Save data (in background)
-    #    Resque.enqueue(SaveData, results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
-    SaveData.perform(results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
+    Resque.enqueue(SaveData, results, collection, matching_selector, collection.source, val_string(matching_selector.term_query))
   end
 
   # Add a new status message

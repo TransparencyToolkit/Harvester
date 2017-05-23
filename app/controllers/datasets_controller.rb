@@ -16,8 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    #    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source, nil)
-    DeleteSelectors.perform(@dataset.terms)
+    Resque.enqueue(DeleteSelectors, @dataset.terms)
 
     # Destroy and show notification
     respond_to do |format|

@@ -14,9 +14,8 @@ class TermsController < ApplicationController
     remove_renum_dataset
 
     # Destroy associated data items
-#    Resque.enqueue(DeleteSelectors, @term.dataitems, nil, @dataset.source, @term)
-    DeleteSelectors.perform([@term])
-    
+    Resque.enqueue(DeleteSelectors, [@term])
+   
     respond_to do |format|
       if @term.destroy
         format.html{redirect_to @dataset, notice: 'Selector was successfully deleted.'}

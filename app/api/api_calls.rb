@@ -24,4 +24,9 @@ module ApiCalls
                 Curl::PostField.content("index_name", index_name),
                 Curl::PostField.content("selectors", JSON.generate(selectors)))
   end
+
+  def get_project_spec(index_name)
+    http = Curl.get("http://localhost:3000/get_project_spec", {:index_name => index_name})
+    return JSON.parse(http.body_str)
+  end
 end

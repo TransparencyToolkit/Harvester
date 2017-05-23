@@ -1,7 +1,6 @@
 require 'pry'
 
 class TermsController < ApplicationController
-  include TagGen
   include SaveData
   include IndexData
   include CollectData
@@ -15,8 +14,8 @@ class TermsController < ApplicationController
     remove_renum_dataset
 
     # Destroy associated data items
-    Resque.enqueue(DeleteSelectors, @term.dataitems, nil, @dataset.source, @term)
-
+    Resque.enqueue(DeleteSelectors, [@term])
+   
     respond_to do |format|
       if @term.destroy
         format.html{redirect_to @dataset, notice: 'Selector was successfully deleted.'}

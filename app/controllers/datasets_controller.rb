@@ -1,5 +1,4 @@
 class DatasetsController < ApplicationController
-  include TagGen
   include CollectData
   include SaveData
   include IndexData
@@ -8,6 +7,7 @@ class DatasetsController < ApplicationController
   include SaveColselec
   include DatasetsHelper
   include ScheduleRecrawl
+  include CrawlerManager
   def index
     @datasets = Dataset.all
   end
@@ -16,7 +16,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.find(params[:id])
 
     # Delete associated terms and items
-    Resque.enqueue(DeleteSelectors, @dataset.dataitems, @dataset.terms, @dataset.source, nil)
+    Resque.enqueue(DeleteSelectors, @dataset.terms)
 
     # Destroy and show notification
     respond_to do |format|
@@ -47,13 +47,13 @@ class DatasetsController < ApplicationController
 
   def sources
     @datasets = Dataset.all
-    @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
+    @crawlers = JSON.parse(list_crawlers)
     @crawler_names = @crawlers.map{|c| c["classname"]}
   end
 
   def edit
     @dataset = Dataset.find(params[:id])
-    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+@dataset.source).body_str)
+    @crawler = JSON.parse(get_crawler_info(@dataset.source))
     @input = @crawler["input_params"]
   end
 
@@ -89,7 +89,7 @@ class DatasetsController < ApplicationController
   end
 
   def new
-    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)
+    @crawler = JSON.parse(get_crawler_info(params["source"]))
     @input = @crawler["input_params"]
     @dataset = Dataset.new
   end
@@ -97,7 +97,7 @@ class DatasetsController < ApplicationController
   def create
     # Save the dataset
     save_dataset(dataset_params)
-
+    
     # Save the recrawl info
     save_rescrape_info(@dataset, @dataset.terms, params["recrawl_frequency"], params["recrawl_interval"])
          
@@ -146,6 +146,6 @@ class DatasetsController < ApplicationController
   def dataset_params
     params[:input_query_fields] = {empty: "empty"} if params[:input_query_fields].empty?
     name = params.require(:dataset).permit(:name)
-    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)}).merge(params.permit(:pbox_messages))
+    return name.merge(params.permit(:source)).merge({input_query_fields: params.require(:input_query_fields)}.to_hash).merge(params.permit(:pbox_messages))
   end
 end

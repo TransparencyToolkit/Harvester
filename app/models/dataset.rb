@@ -15,5 +15,4 @@ class Dataset
   
   # Associations
   has_many :terms
-  has_many :dataitems
 end

@@ -1,5 +1,6 @@
 module SaveData
   include IndexData
+  include CrawlerManager
 
   @queue = :save
 
@@ -33,7 +34,7 @@ module SaveData
   # Generate parameters hash
   def gen_params_hash(dataitem, source)
     item_hash = Hash.new
-    output_fields = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["output_fields"]
+    output_fields = JSON.parse(get_crawler_info(source))["output_fields"]
     output_fields.each do |field|
       item_hash[field] = dataitem[field]
     end
@@ -45,16 +46,26 @@ module SaveData
   def add_association(field1, item2)
     field1 << item2
   end
+
+  # Create the top level dir for storing data
+  def create_overall_data_dir
+    base_path = "#{Dir.pwd}/../#{ENV['PROJECT_INDEX']}/"
+    Dir.mkdir(base_path) unless File.directory?(base_path)
+  end
+
+  # Create the next directory down
+  def create_next_level_dir(folder_name)
+    base_path = "#{Dir.pwd}/../#{ENV['PROJECT_INDEX']}/"
+    results_dir = base_path+folder_name
+    Dir.mkdir(results_dir) unless File.directory?(results_dir)
+    return results_dir
+  end
   
   # Save folders of data files
   def save_data_files(dataset_name, source, print_data, out_file_name)
-    # Create the overall directory
-    base_path = "#{Dir.pwd}/../#{ENV['PROJECT_INDEX']}/"
-    Dir.mkdir(base_path) unless File.directory?(base_path)
-    
-    # Create results directory with name based on dataset
-    results_dir = base_path+dataset_name.gsub(" ", "_").gsub("/", "-")+"_"+source+"/"
-    Dir.mkdir(results_dir) unless File.directory?(results_dir)
+    # Create the overall directory and results dir
+    create_overall_data_dir
+    results_dir = create_next_level_dir("#{dataset_name.gsub(" ", "_").gsub("/", "-")}_#{source}/")
 
     # Set output filename based on output and timestamp
     filename = results_dir+out_file_name+Time.now.to_s.gsub(":", "").gsub(" ", "_")+rand(5000).to_s+".json"

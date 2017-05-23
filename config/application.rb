@@ -10,7 +10,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 require 'mongoid'
-load "app/helpers/gen_crawlers.rb"
+load "app/manage_crawl/gen_crawlers.rb"
 load "app/api/api_calls.rb"
 load "config/initializers/project_config.rb"
 

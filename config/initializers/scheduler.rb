@@ -1,6 +1,6 @@
 require 'rufus-scheduler'
 require 'pry'
-load 'app/helpers/schedule_recrawl.rb'
+load 'app/manage_crawl/schedule_recrawl.rb'
 load 'app/index/index_data.rb'
 
 include ScheduleRecrawl

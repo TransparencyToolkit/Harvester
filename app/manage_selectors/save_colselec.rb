@@ -15,6 +15,16 @@ module SaveColselec
     setup_selectors(@dataset.input_query_fields)
   end
 
+  # Add collection name tag
+  def add_collection_tags(dataset_params)
+    return dataset_params.merge({collection_tag: dataset_params["name"]})
+  end
+
+  # Generates a selector name for tracking in LG index
+  def gen_selector_name(term_query)
+    return term_query.inject(""){|str, k| str+=k[1]+" " if k[1]}.strip
+  end
+
   # Turn a file of selectors into the same format as input_query_fields
   def process_selector_file
     # Get array of hashes
@@ -46,9 +56,11 @@ module SaveColselec
 
     # Make new term for each search term
     term_list.each do |k, v|
-      all_terms.push(Term.create({term_query: v, selector_num: k}.merge(add_selector_tags(v))))
+      overall_tag = gen_selector_name(v) + " ("+@dataset.name+")"
+      selector_tags = {collection_tag: @dataset.name, selector_tag: gen_selector_name(v), overall_tag: overall_tag}
+      all_terms.push(Term.create({term_query: v, selector_num: k}.merge(selector_tags)))
     end
-
+    
     # Return the created terms
     return all_terms
   end

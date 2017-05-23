@@ -1,6 +1,7 @@
 module CollectData
   include RecrawlTime
   include SaveData
+  include CrawlerManager
 
   @queue = :collect
 
@@ -21,30 +22,24 @@ module CollectData
   def scrape_selector(selector, source, dataset)
     # Get term info
     term_query = selector[:term_query]
-    query = gen_query_url(term_query, source, selector.overall_tag)
+    query = gen_query_request(term_query, source, selector.overall_tag)
     
     # Send query and update time
-    Curl.get(query)
+    crawl(*query)
     update_recrawl_time(selector)
   end
 
 
-  # Generate URL with params and crawler info
-  def gen_query_url(query, source, selector_tag)
-    @input_params = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["input_params"]
-
-    # Gen url base
-    url = "http://0.0.0.0:9506/crawlers?"
-    url += "crawler="+source
-    url += "&selector-tag="+Base64.encode64(source+"_"+selector_tag).strip.gsub(/\n/, '')
-    url += "&harvester-path="+Base64.encode64("localhost:"+Rails::Server.new.options[:Port].to_s).strip
-
+  # Generate request with params and crawler info
+  def gen_query_request(query, source, selector_tag)
+    @input_params = JSON.parse(get_crawler_info(source))["input_params"]
+    
     # Add all params for dataset
-    @input_params.each do |param, type|
-      par = query[param] ? Base64.encode64(query[param]).strip.gsub(/\n/, '') : ""
-      url += "&"+param+"="+par
+    input_queries = @input_params.inject({}) do |param_arr, param|
+      param_arr[param[0]] = query[param[0]]
+      param_arr
     end
     
-    return url
+    return ["#{source}_#{selector_tag}", source, input_queries]
   end
 end

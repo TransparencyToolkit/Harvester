@@ -1,7 +1,6 @@
 require 'pry'
 
 class TermsController < ApplicationController
-  include TagGen
   include SaveData
   include IndexData
   include CollectData

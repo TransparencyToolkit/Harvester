@@ -28,7 +28,7 @@ module IndexData
     item_fields = JSON.parse(data_item.to_json).except("_id")
 
     # Get dataset name and source
-    data_source = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+source).body_str)["name"]
+    data_source = JSON.parse(get_crawler_info(source))["name"]
 
     # Merge in fields and return
     item_fields.merge!(collection_tag: [selector["collection_tag"]])
@@ -36,9 +36,5 @@ module IndexData
     item_fields.merge!(data_source: data_source)
     
     return item_fields
-  end
-
-  def gen_dataspec(source)
-    Curl.get("http://localhost:3000/find_dataspec?source="+source)
   end
 end

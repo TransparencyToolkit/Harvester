@@ -1,5 +1,4 @@
 class DatasetsController < ApplicationController
-  include TagGen
   include CollectData
   include SaveData
   include IndexData
@@ -8,6 +7,7 @@ class DatasetsController < ApplicationController
   include SaveColselec
   include DatasetsHelper
   include ScheduleRecrawl
+  include CrawlerManager
   def index
     @datasets = Dataset.all
   end
@@ -48,13 +48,13 @@ class DatasetsController < ApplicationController
 
   def sources
     @datasets = Dataset.all
-    @crawlers = JSON.parse(Curl.get('http://0.0.0.0:9506/list_crawlers').body_str)
+    @crawlers = JSON.parse(list_crawlers)
     @crawler_names = @crawlers.map{|c| c["classname"]}
   end
 
   def edit
     @dataset = Dataset.find(params[:id])
-    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+@dataset.source).body_str)
+    @crawler = JSON.parse(get_crawler_info(@dataset.source))
     @input = @crawler["input_params"]
   end
 
@@ -90,7 +90,7 @@ class DatasetsController < ApplicationController
   end
 
   def new
-    @crawler = JSON.parse(Curl.get("http://0.0.0.0:9506/get_crawler_info?crawler="+params["source"]).body_str)
+    @crawler = JSON.parse(get_crawler_info(params["source"]))
     @input = @crawler["input_params"]
     @dataset = Dataset.new
   end

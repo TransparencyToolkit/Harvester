@@ -1,16 +1,32 @@
-This is a backend for Transparency Toolkit's other tools (LookingGlass,
-Harvester, Catalyst). It indexes data, stores the documents, and processes
-queries all in one place. All the specifications for what data sources are
-available and what fields they have are also handled by DocManager.
+Harvester
+=========
+
+Harvester is a tool to crawl websites and OCR/extract metadata from documents,
+all through a usable graphical interface. The goal is for journalists,
+activists, and researchers to be able to rapidly collect open source
+intelligence (OSINT) from public websites and convert any set of documents
+into machine readable form without programming or complex technical setup.
+
+Harvester requires
+[DocManager](https://github.com/TransparencyToolkit/DocManager) so that it can
+index the data with Elasticsearch. Harvester can also be used with
+[LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) to
+seamlessly generate searchable archives of crawled data and processed
+documents.
 
 # Installation
 
 ## Dependencies
 
-* elasticsearch 5.4.0
-* ruby 2.4.1
-* rails 5
-* mongodb
+* [DocManager](https://github.com/TransparencyToolkit/DocManager) and all of
+  its dependencies
+* Ruby 2.4.1
+* Rails 5
+* Mongodb
+* Curl
+* Redis
+* Tika and Tesseract
+* (optionally) [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass)
 
 ## Setup Instructions
 
@@ -18,68 +34,41 @@ available and what fields they have are also handled by DocManager.
 
 * Download elasticsearch (https://www.elastic.co/downloads/elasticsearch)
 * Download rvm (https://rvm.io/rvm/install)
-* rvm install 2.4.1 and rvm use 2.4.1
-* gem install rails
-* bundle install
+* Install Ruby: Run `rvm install 2.4.1` and `rvm use 2.4.1`
+* Install Rails: `gem install rails`
+* Install Debian dependencies: `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev mongodb`
+* Follow the installation instructions for [DocManager](https://github.com/TransparencyToolkit/DocManager)
+* Install Redis: [instructions for Debian](https://www.linode.com/docs/databases/redis/deploy-redis-on-ubuntu-or-debian#debian)
 
-2. Run
+2. Install Tika & Tesseract (optional)
 
-* Start elasticsearch (exact method depends on installation method)
-* Create a directory for the mongodb database
-* mongod --dbpath dirname/
-* rails server
+NOTE: By default document conversion (pdf, docs, etc..) is handled by
+[GiveMeText](http://givemetext.okfnlabs.org), this approach sends your
+documents over the clear internet. *DO NOT USE THIS* with sensitive documents,
+instead install Tika & Tesseract as described below.
 
-3. Testing and Similar
+* Install dependencies: `apt-get install default-jdk maven unzip`
+* Download Tika: Run `curl https://codeload.github.com/apache/tika/zip/trunk -o  trunk.zip` and `unzip trunk.zip`
+* Go into Tika directory: `cd tika-trunk`
+* Install Tika: Run `mvn -DskipTests=true clean install` and `cp tika-server/target/tika-server-1.*-SNAPSHOT.jar /srv/tika-server-1.*-SNAPSHOT.jar`
+* Install Tesseract: Run `apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng`
+* Run Tika: `java -jar tika-server/target/tika-server-*.jar` (use `--host=localhost --port=1234` for a custom host and port)
 
-* Run Tests: bundle exec rspec
-* Look at DB: mongo doc_manager_development
+3. Get Harvester
 
+* Clone repo: `git clone https://github.com/TransparencyToolkit/Harvester`
+* Go into Harvester directory: `cd Harvester`
+* Install RubyGems: Run `bundle install`
 
-# Software and Config File Structure
+4. Run Harvester
 
-## Project and Data Source Configuration Files
-
-Configuration files for data sources and projects are stored in the
-dataspec_files directory. This has three directories with three types of
-sub-files-
-* projects: A project is a collection of all data on a particular topic (or
-that you want stored in the same elasticsearch index). It is only possible to
-access one project at a time, but you can switch between multiple
-projects. Each project can have multiple data sources. The configuration files
-specifying what data sources a project includes, what it is called, etc. are
-in the projects directory.
-* data_sources: Each data source needs a config file to specify what fields it
-has, where each should show up on the various apps, it's name, etc. The
-correct data source file is automatically loaded into the other apps when
-needed and all supported data sources have pre-written config files.
-* fields_for_all_sources: These config files specify what fields every data
-source has, such as those Harvester uses for managing versions and
-threads. The fields in this directory will be loaded into every data source
-automatically.
-
-These files are automatically loaded into DocManager and used by the apps that
-query it. But the specific project you want to access/use may need to be set
-in configuration options in the other apps.
-
-
-## Code Outline
-
-The code is divided into the following components:
-* analyzers: Config files that elasticsearch uses to determine how it should
-index data in various languages.
-* controllers: Handle incoming requests to the API. These don't have much
-content themselves, but mostly include other functions for managing indexing,
-queries, and dataspecs.
-* dataspec: Load in the project and data source config files, generate models
-for new data sources using metaprogramming, and retrieves the appropriate
-source and project objects when requested.
-* index: Indexes the data in elasticsearch, including preprocessing tasks like
-setting a unique ID (that is consistent across reindexes), tracking different
-versions of the same data, handling different formats of date fields, and
-generally managing messy data. Also handles data deletion.
-* models: Specify the fields that should be saved in mongodb for projects and
-data sources. Most of the management and creation of these sources is
-initially handled in the modules in the dataspec directory.
-* queries: Process and run elasticsearch queries. Includes everything from
-getting the documents to load and showing the total number to actual search
-queries.
+* Start DocManager: Follow the instructions on the
+  [DocManager](https://github.com/TransparencyToolkit/DocManager) repo
+* Configure Project: Edit the file in `config/initializers/project_config` so
+  that the PROJECT_INDEX value is the name of the index in the
+  [DocManager](https://github.com/TransparencyToolkit/DocManager) project
+  config Harvester should use
+* Start Harvester: Run `rails server -p 3333`
+* Start Resque: Run `QUEUE=* rake environment resque:work`
+* Use Harvester: Go to [http://0.0.0.0:3333](http://0.0.0.0:3333) in your
+  browser

@@ -1,90 +1,85 @@
-Harvester
-=========
+This is a backend for Transparency Toolkit's other tools (LookingGlass,
+Harvester, Catalyst). It indexes data, stores the documents, and processes
+queries all in one place. All the specifications for what data sources are
+available and what fields they have are also handled by DocManager.
 
-Web interface and tool to call various web and data crawlers via [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager), using mongodb for persistence and loading documents to [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass).
+# Installation
 
-Harvester depends on:
-- [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) a web interface to search, filter, and browse any JSON data. Includes full text, categorical data and search interface with elasticsearch backend.
-- [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager) an API for running and managing crawlers
+## Dependencies
 
-## Installing
+* elasticsearch 5.4.0
+* ruby 2.4.1
+* rails 5
+* mongodb
 
-Make sure you have the proper system dependencies with
+## Setup Instructions
 
-- Intall Ruby on Rails
-- On Debian, install depedencies:
-  - `sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev mongodb`
-- Install Redis [instructions for
-  Debian](https://www.linode.com/docs/databases/redis/deploy-redis-on-ubuntu-or-debian#debian)
-- Get the Harvester code `git clone https://github.com/TransparencyToolkit/Harvester`
-- Install Ruby dependencies from `cd Harvester` and then `bundle install`
-- Download and install [CrawlerManager](https://github.com/TransparencyToolkit/CrawlerManager)
-- Download & install [LookingGlass](https://github.com/TransparencyToolkit/LookingGlass) and it's depedencies
+1. Install the dependencies
 
-### Install Tika & Tesseract (optional)
+* Download elasticsearch (https://www.elastic.co/downloads/elasticsearch)
+* Download rvm (https://rvm.io/rvm/install)
+* rvm install 2.4.1 and rvm use 2.4.1
+* gem install rails
+* bundle install
 
-By default document conversion (pdf, docs, etc..) is handled by [GiveMeText](http://givemetext.okfnlabs.org), this approach sends your documents over the clear internet. 
-*DO NOT USE THIS* with sensitive documents, instead install Tika & Tesseract.
+2. Run
 
-- Install java package manager `apt-get install default-jdk maven unzip`
-- Download `Tika` from github and unzip it
+* Start elasticsearch (exact method depends on installation method)
+* Create a directory for the mongodb database
+* mongod --dbpath dirname/
+* rails server
 
-```
-mkdir install
-curl https://codeload.github.com/apache/tika/zip/trunk -o trunk.zip
-unzip trunk.zip
-```
+3. Testing and Similar
 
-- Go into the `tika-trunk` direcoty created during the last step & install
+* Run Tests: bundle exec rspec
+* Look at DB: mongo doc_manager_development
 
-```
-cd tika-trunk
-mvn -DskipTests=true clean install
-cp tika-server/target/tika-server-1.*-SNAPSHOT.jar /srv/tika-server-1.*-SNAPSHOT.jar
-```
 
-- Now install `Tesseract` with the following
+# Software and Config File Structure
 
-```
-apt-get -y -q install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
-```
+## Project and Data Source Configuration Files
 
----
+Configuration files for data sources and projects are stored in the
+dataspec_files directory. This has three directories with three types of
+sub-files-
+* projects: A project is a collection of all data on a particular topic (or
+that you want stored in the same elasticsearch index). It is only possible to
+access one project at a time, but you can switch between multiple
+projects. Each project can have multiple data sources. The configuration files
+specifying what data sources a project includes, what it is called, etc. are
+in the projects directory.
+* data_sources: Each data source needs a config file to specify what fields it
+has, where each should show up on the various apps, it's name, etc. The
+correct data source file is automatically loaded into the other apps when
+needed and all supported data sources have pre-written config files.
+* fields_for_all_sources: These config files specify what fields every data
+source has, such as those Harvester uses for managing versions and
+threads. The fields in this directory will be loaded into every data source
+automatically.
 
-## Running Everything
+These files are automatically loaded into DocManager and used by the apps that
+query it. But the specific project you want to access/use may need to be set
+in configuration options in the other apps.
 
-Currently, there are a lot of dameon
 
-**Start CrawlerManager**
+## Code Outline
 
-1. Start `CrawlerManager` in that directory `rails server -p 9506`
-
-**Start Tika**
-
-1. Start `Tika` with `java -jar tika-server/target/tika-server-*.jar` 
-2. If you need Tika to have custom URL or port  `--host=localhost --port=1234`
-
-**Start MongoDB & Rescue**
-
-1. Create directory where to save `/your/harvested/data`
-2. Start `mongodb` with `mongod --dbpath /your/harvested/data`
-3. Run `QUEUE=* rake environment resque:work` To monitor resque with the web interface, also run resque-web
-
-**Start LookingGlass**
-
-1. Start `elasticsearch` as it was installed on your server
-2. Start `LookingGlass` from that directory `rails server`
-
-**Start Harvester**
-
-1. Run Harvester with `rails server -p 3333`
-2. View [0.0.0.0:3000](http://0.0.0.0:3333) in a browser
-
----
-
-**Add CAPTCHA Solving**
-
-Crawling some sites using tools like Tor or VPNs sometimes require solving of
-CAPTCHA's, Harvester can support this you just need to do the following:
-
-..........To be filled out..................
+The code is divided into the following components:
+* analyzers: Config files that elasticsearch uses to determine how it should
+index data in various languages.
+* controllers: Handle incoming requests to the API. These don't have much
+content themselves, but mostly include other functions for managing indexing,
+queries, and dataspecs.
+* dataspec: Load in the project and data source config files, generate models
+for new data sources using metaprogramming, and retrieves the appropriate
+source and project objects when requested.
+* index: Indexes the data in elasticsearch, including preprocessing tasks like
+setting a unique ID (that is consistent across reindexes), tracking different
+versions of the same data, handling different formats of date fields, and
+generally managing messy data. Also handles data deletion.
+* models: Specify the fields that should be saved in mongodb for projects and
+data sources. Most of the management and creation of these sources is
+initially handled in the modules in the dataspec directory.
+* queries: Process and run elasticsearch queries. Includes everything from
+getting the documents to load and showing the total number to actual search
+queries.

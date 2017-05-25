@@ -5,6 +5,8 @@ gem 'rails'
 gem 'puma'
 
 # Frontend
+gem 'execjs'
+gem 'therubyracer'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

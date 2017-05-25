@@ -3,7 +3,7 @@ module CrawlerManager
   def crawl(selector_tag, crawler, query_params)
     # Match up with Harvester instance and object
     @crawler = find_crawler(crawler)
-    harvester_path = "localhost:"+Rails::Server.new.options[:Port].to_s
+    harvester_path = ENV['HARVESTER_URL'].to_s
     
     # Get list of parameters to pass to crawler (in correct order)
     params_for_crawler = [harvester_path, selector_tag]

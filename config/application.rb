@@ -23,6 +23,8 @@ module DocumentLoader
   class Application < Rails::Application
     include ApiCalls
     include GenCrawlers
+    sleep(90)
+    config.action_controller.permit_all_parameters = true
     config.active_job.queue_adapter = :resque
     gen_all_crawlers
   end

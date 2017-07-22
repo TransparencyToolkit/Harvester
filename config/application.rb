@@ -13,6 +13,7 @@ require 'mongoid'
 load "app/manage_crawl/gen_crawlers.rb"
 load "app/api/api_calls.rb"
 load "config/initializers/project_config.rb"
+load "config/initializers/docmanager.rb"
 
 Mongoid.load!(File.expand_path('mongoid.yml', './config'))
 # Require the gems listed in Gemfile, including any gems
@@ -23,7 +24,7 @@ module DocumentLoader
   class Application < Rails::Application
     include ApiCalls
     include GenCrawlers
-    sleep(90)
+#    sleep(90)
     config.action_controller.permit_all_parameters = true
     config.active_job.queue_adapter = :resque
     gen_all_crawlers
